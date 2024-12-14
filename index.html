@@ -19,24 +19,20 @@
             const texts = {
                 'en': {
                     title: "We’ll be back soon!",
-                    message: "Sorry for the inconvenience but we’re performing some maintenance at the moment. If you need to you can always contact us, otherwise we’ll be back online shortly!",
-                    contact: "contact us"
+                    message: "Sorry for the inconvenience but we’re performing some maintenance at the moment. If you need to you can always <a href='mailto:barnas@barnas.com.pl'>contact us</a>, otherwise we’ll be back online shortly!"
                 },
                 'pl': {
                     title: "Wkrótce wracamy!",
-                    message: "Przepraszamy za niedogodności, ale obecnie prowadzimy prace konserwacyjne. W razie potrzeby możesz zawsze skontaktować się z nami, a my wkrótce wrócimy online!",
-                    contact: "skontaktuj się z nami"
+                    message: "Przepraszamy za niedogodności, ale obecnie prowadzimy prace konserwacyjne. W razie potrzeby możesz zawsze <a href='mailto:barnas@barnas.com.pl'>skontaktować się z nami</a>, a my wkrótce wrócimy online!"
                 },
                 'de': {
                     title: "Wir sind bald zurück!",
-                    message: "Entschuldigen Sie die Unannehmlichkeiten, aber wir führen gerade Wartungsarbeiten durch. Wenn Sie möchten, können Sie uns jederzeit kontaktieren, ansonsten sind wir bald wieder online!",
-                    contact: "kontaktieren Sie uns"
+                    message: "Entschuldigen Sie die Unannehmlichkeiten, aber wir führen gerade Wartungsarbeiten durch. Wenn Sie möchten, können Sie uns jederzeit <a href='mailto:barnas@barnas.com.pl'>kontaktieren</a>, ansonsten sind wir bald wieder online!"
                 }
             };
 
             document.querySelector('h1').innerText = texts[lang].title;
-            document.querySelector('#message').innerText = texts[lang].message;
-            document.querySelector('#contact').innerText = texts[lang].contact;
+            document.querySelector('#message').innerHTML = texts[lang].message;
         }
     </script>
 </head>
@@ -50,9 +46,10 @@
     <article>
         <h1>We&rsquo;ll be back soon!</h1>
         <div>
-            <p id="message">Sorry for the inconvenience but we&rsquo;re performing some maintenance at the moment. If you need to you can always <a id="contact" href="mailto:barnas@barnas.com.pl">contact us</a>, otherwise we&rsquo;ll be back online shortly!</p>
+            <p id="message">Sorry for the inconvenience but we&rsquo;re performing some maintenance at the moment. If you need to you can always <a href="mailto:barnas@barnas.com.pl">contact us</a>, otherwise we&rsquo;ll be back online shortly!</p>
             <p>&mdash; BARNAS</p>
         </div>
     </article>
 </body>
 </html>
+
