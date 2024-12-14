@@ -12,10 +12,12 @@
         a:hover { color: rgb(255, 255, 255); text-decoration: none; }
         .language-selector { margin-bottom: 20px; }
         .language-selector button { background-color: #444; color: white; border: none; padding: 10px 15px; margin: 0 5px; cursor: pointer; border-radius: 5px; font-size: 16px; }
+        .language-selector button img { width: 20px; vertical-align: middle; margin-right: 5px; }
         .language-selector button:hover { background-color: #dc0000; }
         footer { margin-top: 30px; color: #aaa; font-size: 14px; }
         .social-icons { margin-top: 10px; }
-        .social-icons a { margin: 0 5px; color: white; font-size: 20px; }
+        .social-icons a { margin: 0 10px; color: white; font-size: 20px; display: inline-block; }
+        .social-icons a img { width: 24px; vertical-align: middle; }
     </style>
     <script>
         function setLanguage(lang) {
@@ -45,9 +47,9 @@
 </head>
 <body>
     <div class="language-selector">
-        <button onclick="setLanguage('en')">🇬🇧 English</button>
-        <button onclick="setLanguage('pl')">🇵🇱 Polski</button>
-        <button onclick="setLanguage('de')">🇩🇪 Deutsch</button>
+        <button onclick="setLanguage('en')"><img src="https://flagcdn.com/w40/gb.png" alt="English">English</button>
+        <button onclick="setLanguage('pl')"><img src="https://flagcdn.com/w40/pl.png" alt="Polski">Polski</button>
+        <button onclick="setLanguage('de')"><img src="https://flagcdn.com/w40/de.png" alt="Deutsch">Deutsch</button>
     </div>
 
     <article>
@@ -61,9 +63,9 @@
     <footer>
         <div id="footer-text">Expected return: soon</div>
         <div class="social-icons">
-            <a href="https://facebook.com" target="_blank">🌐 Facebook</a>
-            <a href="https://twitter.com" target="_blank">🌐 Twitter</a>
-            <a href="https://linkedin.com" target="_blank">🌐 LinkedIn</a>
+            <a href="https://facebook.com" target="_blank"><img src="https://cdn-icons-png.flaticon.com/512/124/124010.png" alt="Facebook">Facebook</a>
+            <a href="https://twitter.com" target="_blank"><img src="https://cdn-icons-png.flaticon.com/512/124/124021.png" alt="Twitter">Twitter</a>
+            <a href="https://linkedin.com" target="_blank"><img src="https://cdn-icons-png.flaticon.com/512/124/124011.png" alt="LinkedIn">LinkedIn</a>
         </div>
     </footer>
 </body>
