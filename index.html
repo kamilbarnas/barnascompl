@@ -5,19 +5,93 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BARNAS</title>
     <style>
-        body { background: linear-gradient(45deg, #0d0d0d, #333); text-align: center; padding: 50px; font: 20px Helvetica, sans-serif; color: rgb(255, 255, 255); }
-        h1 { font-size: 50px; margin-bottom: 20px; }
-        article { display: block; text-align: left; width: 650px; margin: 0 auto; padding: 20px; background-color: rgba(0, 0, 0, 0.8); border-radius: 10px; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5); }
-        a { color: #dc0000; text-decoration: none; }
-        a:hover { color: rgb(255, 255, 255); text-decoration: none; }
-        .language-selector { margin-bottom: 20px; }
-        .language-selector button { background-color: #444; color: white; border: none; padding: 10px 15px; margin: 0 5px; cursor: pointer; border-radius: 5px; font-size: 16px; }
-        .language-selector button img { width: 20px; vertical-align: middle; margin-right: 5px; }
-        .language-selector button:hover { background-color: #dc0000; }
-        footer { margin-top: 30px; color: #aaa; font-size: 14px; }
-        .social-icons { margin-top: 10px; }
-        .social-icons a { margin: 0 10px; color: white; font-size: 20px; display: inline-block; }
-        .social-icons a img { width: 24px; vertical-align: middle; }
+        body { 
+            background: linear-gradient(45deg, #0d0d0d, #333); 
+            text-align: center; 
+            padding: 20px; 
+            font: 16px Helvetica, sans-serif; 
+            color: rgb(255, 255, 255); 
+        }
+        h1 { 
+            font-size: 36px; 
+            margin-bottom: 20px; 
+        }
+        article { 
+            display: block; 
+            text-align: left; 
+            max-width: 90%; 
+            width: 650px; 
+            margin: 0 auto; 
+            padding: 20px; 
+            background-color: rgba(0, 0, 0, 0.8); 
+            border-radius: 10px; 
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5); 
+        }
+        a { 
+            color: #dc0000; 
+            text-decoration: none; 
+        }
+        a:hover { 
+            color: rgb(255, 255, 255); 
+            text-decoration: none; 
+        }
+        .language-selector { 
+            margin-bottom: 20px; 
+            display: flex; 
+            justify-content: center; 
+            flex-wrap: wrap; 
+        }
+        .language-selector button { 
+            background-color: #444; 
+            color: white; 
+            border: none; 
+            padding: 10px 15px; 
+            margin: 5px; 
+            cursor: pointer; 
+            border-radius: 5px; 
+            font-size: 14px; 
+            display: flex; 
+            align-items: center; 
+        }
+        .language-selector button img { 
+            width: 20px; 
+            height: 20px; 
+            vertical-align: middle; 
+            margin-right: 5px; 
+        }
+        .language-selector button:hover { 
+            background-color: #dc0000; 
+        }
+        footer { 
+            margin-top: 30px; 
+            color: #aaa; 
+            font-size: 14px; 
+        }
+        .social-icons { 
+            margin-top: 10px; 
+            display: flex; 
+            justify-content: center; 
+            gap: 10px; 
+        }
+        .social-icons a { 
+            color: white; 
+            font-size: 14px; 
+            text-align: center; 
+            display: flex; 
+            align-items: center; 
+            gap: 5px; 
+        }
+        .social-icons a img { 
+            width: 24px; 
+            height: 24px; 
+        }
+
+        @media (max-width: 600px) {
+            h1 { font-size: 28px; }
+            article { padding: 15px; }
+            .language-selector button { font-size: 12px; padding: 8px 12px; }
+            .social-icons a img { width: 20px; height: 20px; }
+        }
     </style>
     <script>
         function setLanguage(lang) {
