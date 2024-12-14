@@ -5,51 +5,66 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BARNAS</title>
     <style>
-        body { background-color: rgb(0, 0, 0); text-align: center; padding: 150px; font: 20px Helvetica, sans-serif; color: rgb(255, 255, 255); }
-        h1 { font-size: 50px; }
-        article { display: block; text-align: left; width: 650px; margin: 0 auto; }
+        body { background: linear-gradient(45deg, #0d0d0d, #333); text-align: center; padding: 50px; font: 20px Helvetica, sans-serif; color: rgb(255, 255, 255); }
+        h1 { font-size: 50px; margin-bottom: 20px; }
+        article { display: block; text-align: left; width: 650px; margin: 0 auto; padding: 20px; background-color: rgba(0, 0, 0, 0.8); border-radius: 10px; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5); }
         a { color: #dc0000; text-decoration: none; }
         a:hover { color: rgb(255, 255, 255); text-decoration: none; }
         .language-selector { margin-bottom: 20px; }
-        .language-selector button { background-color: #444; color: white; border: none; padding: 10px 15px; margin: 0 5px; cursor: pointer; }
+        .language-selector button { background-color: #444; color: white; border: none; padding: 10px 15px; margin: 0 5px; cursor: pointer; border-radius: 5px; font-size: 16px; }
         .language-selector button:hover { background-color: #dc0000; }
+        footer { margin-top: 30px; color: #aaa; font-size: 14px; }
+        .social-icons { margin-top: 10px; }
+        .social-icons a { margin: 0 5px; color: white; font-size: 20px; }
     </style>
     <script>
         function setLanguage(lang) {
             const texts = {
                 'en': {
                     title: "We’ll be back soon!",
-                    message: "Sorry for the inconvenience but we’re performing some maintenance at the moment. If you need to you can always <a href='mailto:barnas@barnas.com.pl'>contact us</a>, otherwise we’ll be back online shortly!"
+                    message: "Sorry for the inconvenience but we’re performing some maintenance at the moment. If you need to you can always <a href='mailto:barnas@barnas.com.pl'>contact us</a>, otherwise we’ll be back online shortly!",
+                    footer: "Expected return: soon"
                 },
                 'pl': {
                     title: "Wkrótce wracamy!",
-                    message: "Przepraszamy za niedogodności, ale obecnie prowadzimy prace konserwacyjne. W razie potrzeby możesz zawsze <a href='mailto:barnas@barnas.com.pl'>skontaktować się z nami</a>, a my wkrótce wrócimy online!"
+                    message: "Przepraszamy za niedogodności, ale obecnie prowadzimy prace konserwacyjne. W razie potrzeby możesz zawsze <a href='mailto:barnas@barnas.com.pl'>skontaktować się z nami</a>, a my wkrótce wrócimy online!",
+                    footer: "Planowany powrót: wkrótce"
                 },
                 'de': {
                     title: "Wir sind bald zurück!",
-                    message: "Entschuldigen Sie die Unannehmlichkeiten, aber wir führen gerade Wartungsarbeiten durch. Wenn Sie möchten, können Sie uns jederzeit <a href='mailto:barnas@barnas.com.pl'>kontaktieren</a>, ansonsten sind wir bald wieder online!"
+                    message: "Entschuldigen Sie die Unannehmlichkeiten, aber wir führen gerade Wartungsarbeiten durch. Wenn Sie möchten, können Sie uns jederzeit <a href='mailto:barnas@barnas.com.pl'>kontaktieren</a>, ansonsten sind wir bald wieder online!",
+                    footer: "Erwartete Rückkehr: bald"
                 }
             };
 
             document.querySelector('h1').innerText = texts[lang].title;
             document.querySelector('#message').innerHTML = texts[lang].message;
+            document.querySelector('#footer-text').innerText = texts[lang].footer;
         }
     </script>
 </head>
 <body>
     <div class="language-selector">
-        <button onclick="setLanguage('en')">English</button>
-        <button onclick="setLanguage('pl')">Polski</button>
-        <button onclick="setLanguage('de')">Deutsch</button>
+        <button onclick="setLanguage('en')">🇬🇧 English</button>
+        <button onclick="setLanguage('pl')">🇵🇱 Polski</button>
+        <button onclick="setLanguage('de')">🇩🇪 Deutsch</button>
     </div>
 
     <article>
-        <h1>We&rsquo;ll be back soon!</h1>
+        <h1>We’ll be back soon!</h1>
         <div>
-            <p id="message">Sorry for the inconvenience but we&rsquo;re performing some maintenance at the moment. If you need to you can always <a href="mailto:barnas@barnas.com.pl">contact us</a>, otherwise we&rsquo;ll be back online shortly!</p>
+            <p id="message">Sorry for the inconvenience but we’re performing some maintenance at the moment. If you need to you can always <a href="mailto:barnas@barnas.com.pl">contact us</a>, otherwise we’ll be back online shortly!</p>
             <p>&mdash; BARNAS</p>
         </div>
     </article>
+
+    <footer>
+        <div id="footer-text">Expected return: soon</div>
+        <div class="social-icons">
+            <a href="https://facebook.com" target="_blank">🌐 Facebook</a>
+            <a href="https://twitter.com" target="_blank">🌐 Twitter</a>
+            <a href="https://linkedin.com" target="_blank">🌐 LinkedIn</a>
+        </div>
+    </footer>
 </body>
 </html>
-
