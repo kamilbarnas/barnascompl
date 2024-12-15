@@ -80,23 +80,21 @@
             }
         }
 
-        footer {
+        .contact {
             position: absolute;
-            bottom: 20px;
-            width: 100%;
-            text-align: center;
-            font-size: 1.2em;
+            top: 20px;
+            left: 20px;
+            font-size: 1.5em;
         }
 
-        footer a {
+        .contact a {
             color: #00ff00;
             text-decoration: none;
-            font-size: 1.5em;
             font-weight: bold;
             text-shadow: 0 0 5px #00ff00, 0 0 10px #00ff00;
         }
 
-        footer a:hover {
+        .contact a:hover {
             text-decoration: underline;
         }
     </style>
@@ -128,13 +126,13 @@
         <button onclick="changeLanguage('en')"><img src="https://upload.wikimedia.org/wikipedia/en/a/a4/Flag_of_the_United_States.svg" alt="English"></button>
         <button onclick="changeLanguage('de')"><img src="https://upload.wikimedia.org/wikipedia/en/b/ba/Flag_of_Germany.svg" alt="Deutsch"></button>
     </div>
+    <div class="contact">
+        <a href="mailto:barnas@barnas.com.pl">@</a>
+    </div>
     <div class="container">
         <h1>Strona w budowie</h1>
         <p>Pracujemy nad czymś niesamowitym. Zapraszamy wkrótce!</p>
         <div class="loader"></div>
     </div>
-    <footer>
-        <a href="mailto:barnas@barnas.com.pl">@</a>
-    </footer>
 </body>
 </html>
