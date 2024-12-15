@@ -34,7 +34,9 @@
         }
 
         .language-switch {
-            margin-bottom: 1.5em;
+            position: absolute;
+            top: 20px;
+            right: 20px;
         }
 
         .language-switch button {
@@ -119,12 +121,12 @@
     </script>
 </head>
 <body>
+    <div class="language-switch">
+        <button onclick="changeLanguage('pl')">Polski</button>
+        <button onclick="changeLanguage('en')">English</button>
+        <button onclick="changeLanguage('de')">Deutsch</button>
+    </div>
     <div class="container">
-        <div class="language-switch">
-            <button onclick="changeLanguage('pl')">Polski</button>
-            <button onclick="changeLanguage('en')">English</button>
-            <button onclick="changeLanguage('de')">Deutsch</button>
-        </div>
         <h1>Strona w budowie</h1>
         <p>Pracujemy nad czymś niesamowitym. Zapraszamy wkrótce!</p>
         <div class="loader"></div>
