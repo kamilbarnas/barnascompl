@@ -33,6 +33,26 @@
             margin-bottom: 1.5em;
         }
 
+        .language-switch {
+            margin-bottom: 1.5em;
+        }
+
+        .language-switch button {
+            background: #fff;
+            color: #4A90E2;
+            border: none;
+            padding: 0.5em 1em;
+            font-size: 1em;
+            cursor: pointer;
+            border-radius: 5px;
+            margin: 0 0.5em;
+        }
+
+        .language-switch button:hover {
+            background: #9013FE;
+            color: #fff;
+        }
+
         .loader {
             display: inline-block;
             width: 50px;
@@ -76,9 +96,35 @@
             border-bottom: 1px solid #fff;
         }
     </style>
+    <script>
+        function changeLanguage(lang) {
+            const translations = {
+                pl: {
+                    title: "Strona w budowie",
+                    message: "Pracujemy nad czymś niesamowitym. Zapraszamy wkrótce!"
+                },
+                en: {
+                    title: "Website Under Construction",
+                    message: "We are working on something amazing. Stay tuned!"
+                },
+                de: {
+                    title: "Webseite im Aufbau",
+                    message: "Wir arbeiten an etwas Unglaublichem. Besuchen Sie uns bald wieder!"
+                }
+            };
+
+            document.querySelector('h1').innerText = translations[lang].title;
+            document.querySelector('p').innerText = translations[lang].message;
+        }
+    </script>
 </head>
 <body>
     <div class="container">
+        <div class="language-switch">
+            <button onclick="changeLanguage('pl')">Polski</button>
+            <button onclick="changeLanguage('en')">English</button>
+            <button onclick="changeLanguage('de')">Deutsch</button>
+        </div>
         <h1>Strona w budowie</h1>
         <p>Pracujemy nad czymś niesamowitym. Zapraszamy wkrótce!</p>
         <div class="loader"></div>
