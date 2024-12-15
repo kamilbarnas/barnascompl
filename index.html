@@ -4,17 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Strona w budowie</title>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&display=swap" rel="stylesheet">
     <style>
         body {
             margin: 0;
-            font-family: 'Roboto', sans-serif;
+            font-family: 'Roboto Mono', monospace;
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
-            background: linear-gradient(135deg, #000, #434343);
-            color: #fff;
+            background: radial-gradient(circle, #000 60%, #003300);
+            color: #00ff00;
             overflow: hidden;
         }
 
@@ -26,11 +26,13 @@
         h1 {
             font-size: 3em;
             margin-bottom: 0.5em;
+            text-shadow: 0 0 5px #00ff00, 0 0 10px #00ff00;
         }
 
         p {
             font-size: 1.5em;
             margin-bottom: 1.5em;
+            text-shadow: 0 0 5px #00ff00, 0 0 10px #00ff00;
         }
 
         .language-switch {
@@ -49,7 +51,7 @@
         .language-switch img {
             width: 30px;
             height: 20px;
-            border: 1px solid #fff;
+            border: 1px solid #00ff00;
             border-radius: 3px;
         }
 
@@ -57,9 +59,9 @@
             display: inline-block;
             width: 50px;
             height: 50px;
-            border: 5px solid rgba(255, 255, 255, 0.3);
+            border: 5px solid rgba(0, 255, 0, 0.3);
             border-radius: 50%;
-            border-top-color: #fff;
+            border-top-color: #00ff00;
             animation: spin 1s infinite linear;
         }
 
@@ -90,13 +92,13 @@
             display: inline-block;
             width: 40px;
             height: 40px;
-            background: url('https://upload.wikimedia.org/wikipedia/commons/8/8c/At_sign.svg') no-repeat center;
+            background: url('https://upload.wikimedia.org/wikipedia/commons/d/db/Matrix_code.svg') no-repeat center;
             background-size: contain;
             margin-top: 10px;
         }
 
         footer a {
-            color: #fff;
+            color: #00ff00;
             text-decoration: none;
             display: inline-block;
         }
