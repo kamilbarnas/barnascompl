@@ -13,7 +13,7 @@
             justify-content: center;
             align-items: center;
             height: 100vh;
-            background: linear-gradient(135deg, #4A90E2, #9013FE);
+            background: linear-gradient(135deg, #000, #434343);
             color: #fff;
             overflow: hidden;
         }
@@ -40,19 +40,17 @@
         }
 
         .language-switch button {
-            background: #fff;
-            color: #4A90E2;
+            background: none;
             border: none;
-            padding: 0.5em 1em;
-            font-size: 1em;
             cursor: pointer;
-            border-radius: 5px;
             margin: 0 0.5em;
         }
 
-        .language-switch button:hover {
-            background: #9013FE;
-            color: #fff;
+        .language-switch img {
+            width: 30px;
+            height: 20px;
+            border: 1px solid #fff;
+            border-radius: 3px;
         }
 
         .loader {
@@ -85,17 +83,26 @@
             bottom: 20px;
             width: 100%;
             text-align: center;
-            font-size: 0.9em;
+            font-size: 1.2em;
+        }
+
+        footer .contact-logo {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            background: url('https://upload.wikimedia.org/wikipedia/commons/8/8c/At_sign.svg') no-repeat center;
+            background-size: contain;
+            margin-top: 10px;
         }
 
         footer a {
             color: #fff;
             text-decoration: none;
-            border-bottom: 1px dashed rgba(255, 255, 255, 0.7);
+            display: inline-block;
         }
 
         footer a:hover {
-            border-bottom: 1px solid #fff;
+            text-decoration: underline;
         }
     </style>
     <script>
@@ -122,9 +129,9 @@
 </head>
 <body>
     <div class="language-switch">
-        <button onclick="changeLanguage('pl')">Polski</button>
-        <button onclick="changeLanguage('en')">English</button>
-        <button onclick="changeLanguage('de')">Deutsch</button>
+        <button onclick="changeLanguage('pl')"><img src="https://upload.wikimedia.org/wikipedia/en/1/12/Flag_of_Poland.svg" alt="Polski"></button>
+        <button onclick="changeLanguage('en')"><img src="https://upload.wikimedia.org/wikipedia/en/a/a4/Flag_of_the_United_States.svg" alt="English"></button>
+        <button onclick="changeLanguage('de')"><img src="https://upload.wikimedia.org/wikipedia/en/b/ba/Flag_of_Germany.svg" alt="Deutsch"></button>
     </div>
     <div class="container">
         <h1>Strona w budowie</h1>
@@ -132,7 +139,9 @@
         <div class="loader"></div>
     </div>
     <footer>
-        <p>Kontakt: <a href="mailto:kontakt@twojastrona.pl">kontakt@twojastrona.pl</a></p>
+        <a href="mailto:kontakt@twojastrona.pl">
+            <div class="contact-logo"></div>
+        </a>
     </footer>
 </body>
 </html>
