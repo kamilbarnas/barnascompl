@@ -71,36 +71,37 @@
             animation: spin 1s linear infinite;
         }
 
-        .chatgpt {
+        .form-section {
             margin-top: 2em;
-            padding: 1em;
+            text-align: left;
             background: #3a3a56;
+            padding: 1.5em;
             border-radius: 8px;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .form-section form {
+            display: flex;
+            flex-direction: column;
+            gap: 1em;
+        }
+
+        .form-section label {
             font-size: 1em;
-            color: #ffffff;
-            text-align: left;
-            max-width: 450px;
-            line-height: 1.5;
+            color: #b0b0d0;
         }
 
-        .interactive {
-            margin-top: 2em;
-            text-align: left;
-        }
-
-        .interactive input {
-            width: 100%;
+        .form-section textarea {
             padding: 0.8em;
             border: none;
             border-radius: 8px;
             background: #2d2d44;
             color: #ffffff;
             font-size: 1em;
-            margin-bottom: 1em;
+            resize: none;
         }
 
-        .interactive button {
+        .form-section button {
             background: #505072;
             color: #ffffff;
             border: none;
@@ -111,19 +112,8 @@
             transition: background 0.3s;
         }
 
-        .interactive button:hover {
+        .form-section button:hover {
             background: #707092;
-        }
-
-        .response {
-            margin-top: 1em;
-            padding: 1em;
-            background: #3a3a56;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-            font-size: 1em;
-            color: #ffffff;
-            line-height: 1.5;
         }
 
         @keyframes spin {
@@ -143,13 +133,13 @@
             <button onclick="changeLanguage('en')">English</button>
             <button onclick="changeLanguage('de')">Deutsch</button>
         </div>
-        <div class="chatgpt">
-            <strong>ChatGPT:</strong> Cześć! Jeśli masz pytania lub potrzebujesz wsparcia, możesz skontaktować się z nami. Czekamy na Ciebie!
-        </div>
-        <div class="interactive">
-            <input type="text" id="userQuestion" placeholder="Zadaj pytanie ChatGPT...">
-            <button onclick="askChatGPT()">Wyślij</button>
-            <div class="response" id="response"></div>
+        <div class="form-section">
+            <h2>Wyślij wiadomość</h2>
+            <form action="mailto:barnas@barnas.com.pl" method="post" enctype="text/plain">
+                <label for="message">Wiadomość:</label>
+                <textarea id="message" name="message" rows="4" placeholder="Napisz swoją wiadomość..." required></textarea>
+                <button type="submit">Wyślij</button>
+            </form>
         </div>
     </div>
     <script>
@@ -157,36 +147,20 @@
             const translations = {
                 pl: {
                     title: "Strona w budowie",
-                    message: "Pracujemy nad czymś niesamowitym. Zapraszamy wkrótce!",
-                    chatgpt: "Cześć! Jeśli masz pytania lub potrzebujesz wsparcia, możesz skontaktować się z nami. Czekamy na Ciebie!"
+                    message: "Pracujemy nad czymś niesamowitym. Zapraszamy wkrótce!"
                 },
                 en: {
                     title: "Website Under Construction",
-                    message: "We are working on something amazing. Stay tuned!",
-                    chatgpt: "Hi! If you have any questions or need support, feel free to reach out to us. We are here for you!"
+                    message: "We are working on something amazing. Stay tuned!"
                 },
                 de: {
                     title: "Webseite im Aufbau",
-                    message: "Wir arbeiten an etwas Unglaublichem. Besuchen Sie uns bald wieder!",
-                    chatgpt: "Hallo! Wenn Sie Fragen haben oder Unterstützung benötigen, können Sie uns gerne kontaktieren. Wir sind für Sie da!"
+                    message: "Wir arbeiten an etwas Unglaublichem. Besuchen Sie uns bald wieder!"
                 }
             };
 
             document.querySelector('h1').innerText = translations[lang].title;
             document.querySelector('p').innerText = translations[lang].message;
-            document.querySelector('.chatgpt').innerHTML = `<strong>ChatGPT:</strong> ${translations[lang].chatgpt}`;
-        }
-
-        function askChatGPT() {
-            const question = document.getElementById('userQuestion').value;
-            const responseElement = document.getElementById('response');
-            if (question.trim() === '') {
-                responseElement.textContent = "Proszę wpisać pytanie.";
-                return;
-            }
-
-            // Mock response for demo purposes
-            responseElement.textContent = `Odpowiedź ChatGPT: Dziękuję za Twoje pytanie: "${question}". To bardzo ciekawe!`;
         }
     </script>
 </body>
