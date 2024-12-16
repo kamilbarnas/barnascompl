@@ -142,11 +142,11 @@
             <button onclick="changeLanguage('de')">Deutsch</button>
         </div>
         <div class="form-section">
-            <h2>Wyślij wiadomość</h2>
+            <h2 id="formTitle">Wyślij wiadomość</h2>
             <form id="contactForm">
-                <label for="message">Wiadomość:</label>
+                <label for="message" id="labelMessage">Wiadomość:</label>
                 <textarea id="message" name="message" rows="4" placeholder="Napisz swoją wiadomość..." required></textarea>
-                <button type="button" onclick="sendMessage()">Wyślij</button>
+                <button type="button" id="sendButton" onclick="sendMessage()">Wyślij</button>
             </form>
             <div class="confirmation" id="confirmationMessage">Wiadomość została wysłana. Dziękujemy!</div>
         </div>
@@ -156,20 +156,40 @@
             const translations = {
                 pl: {
                     title: "Strona w budowie",
-                    message: "Pracujemy nad czymś niesamowitym. Zapraszamy wkrótce!"
+                    message: "Pracujemy nad czymś niesamowitym. Zapraszamy wkrótce!",
+                    formTitle: "Wyślij wiadomość",
+                    labelMessage: "Wiadomość:",
+                    placeholder: "Napisz swoją wiadomość...",
+                    sendButton: "Wyślij",
+                    confirmation: "Wiadomość została wysłana. Dziękujemy!"
                 },
                 en: {
                     title: "Website Under Construction",
-                    message: "We are working on something amazing. Stay tuned!"
+                    message: "We are working on something amazing. Stay tuned!",
+                    formTitle: "Send a Message",
+                    labelMessage: "Message:",
+                    placeholder: "Write your message...",
+                    sendButton: "Send",
+                    confirmation: "Message sent successfully. Thank you!"
                 },
                 de: {
                     title: "Webseite im Aufbau",
-                    message: "Wir arbeiten an etwas Unglaublichem. Besuchen Sie uns bald wieder!"
+                    message: "Wir arbeiten an etwas Unglaublichem. Besuchen Sie uns bald wieder!",
+                    formTitle: "Nachricht senden",
+                    labelMessage: "Nachricht:",
+                    placeholder: "Schreiben Sie Ihre Nachricht...",
+                    sendButton: "Senden",
+                    confirmation: "Nachricht erfolgreich gesendet. Vielen Dank!"
                 }
             };
 
             document.querySelector('h1').innerText = translations[lang].title;
             document.querySelector('p').innerText = translations[lang].message;
+            document.getElementById('formTitle').innerText = translations[lang].formTitle;
+            document.getElementById('labelMessage').innerText = translations[lang].labelMessage;
+            document.getElementById('message').placeholder = translations[lang].placeholder;
+            document.getElementById('sendButton').innerText = translations[lang].sendButton;
+            document.getElementById('confirmationMessage').innerText = translations[lang].confirmation;
         }
 
         async function sendMessage() {
