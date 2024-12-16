@@ -71,6 +71,19 @@
             animation: spin 1s linear infinite;
         }
 
+        .chatgpt {
+            margin-top: 2em;
+            padding: 1em;
+            background: #3a3a56;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+            font-size: 1em;
+            color: #ffffff;
+            text-align: left;
+            max-width: 450px;
+            line-height: 1.5;
+        }
+
         @keyframes spin {
             100% {
                 transform: rotate(360deg);
@@ -88,26 +101,33 @@
             <button onclick="changeLanguage('en')">English</button>
             <button onclick="changeLanguage('de')">Deutsch</button>
         </div>
+        <div class="chatgpt">
+            <strong>ChatGPT:</strong> Cześć! Jeśli masz pytania lub potrzebujesz wsparcia, możesz skontaktować się z nami. Czekamy na Ciebie!
+        </div>
     </div>
     <script>
         function changeLanguage(lang) {
             const translations = {
                 pl: {
                     title: "Strona w budowie",
-                    message: "Pracujemy nad czymś niesamowitym. Zapraszamy wkrótce!"
+                    message: "Pracujemy nad czymś niesamowitym. Zapraszamy wkrótce!",
+                    chatgpt: "Cześć! Jeśli masz pytania lub potrzebujesz wsparcia, możesz skontaktować się z nami. Czekamy na Ciebie!"
                 },
                 en: {
                     title: "Website Under Construction",
-                    message: "We are working on something amazing. Stay tuned!"
+                    message: "We are working on something amazing. Stay tuned!",
+                    chatgpt: "Hi! If you have any questions or need support, feel free to reach out to us. We are here for you!"
                 },
                 de: {
                     title: "Webseite im Aufbau",
-                    message: "Wir arbeiten an etwas Unglaublichem. Besuchen Sie uns bald wieder!"
+                    message: "Wir arbeiten an etwas Unglaublichem. Besuchen Sie uns bald wieder!",
+                    chatgpt: "Hallo! Wenn Sie Fragen haben oder Unterstützung benötigen, können Sie uns gerne kontaktieren. Wir sind für Sie da!"
                 }
             };
 
             document.querySelector('h1').innerText = translations[lang].title;
             document.querySelector('p').innerText = translations[lang].message;
+            document.querySelector('.chatgpt').innerHTML = `<strong>ChatGPT:</strong> ${translations[lang].chatgpt}`;
         }
     </script>
 </body>
