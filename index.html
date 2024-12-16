@@ -16,7 +16,8 @@
             align-items: center;
             min-height: 100vh;
             text-align: center;
-            overflow-x: hidden;
+            overflow: hidden;
+            padding: 0;
         }
 
         .container {
@@ -134,9 +135,10 @@
 
         @media (max-width: 600px) {
             body {
-                flex-direction: column;
-                align-items: flex-start;
                 padding: 1em;
+                justify-content: center;
+                align-items: center;
+                flex-direction: column;
                 overflow-y: auto;
             }
 
@@ -154,6 +156,8 @@
 
             .container {
                 padding: 1.5em;
+                width: 100%;
+                box-sizing: border-box;
             }
 
             .language-switch {
