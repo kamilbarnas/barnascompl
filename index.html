@@ -25,6 +25,7 @@
             border-radius: 12px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
             max-width: 500px;
+            width: 90%;
         }
 
         h1 {
@@ -44,6 +45,7 @@
             display: flex;
             justify-content: center;
             gap: 1em;
+            flex-wrap: wrap;
         }
 
         .language-switch button {
@@ -129,6 +131,20 @@
                 transform: rotate(360deg);
             }
         }
+
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 1.5em;
+            }
+
+            p {
+                font-size: 1em;
+            }
+
+            .form-section button {
+                font-size: 0.9em;
+            }
+        }
     </style>
 </head>
 <body>
@@ -207,7 +223,7 @@
                         'Content-Type': 'application/json'
                     },
                     body: JSON.stringify({
-                        email: 'kamil.barnas@gmail.com',
+                        email: 'barnas@barnas.com.pl',
                         message: message
                     })
                 });
