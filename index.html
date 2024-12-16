@@ -116,6 +116,14 @@
             background: #707092;
         }
 
+        .confirmation {
+            margin-top: 1em;
+            text-align: center;
+            font-size: 1.2em;
+            color: #a0ffa0;
+            display: none;
+        }
+
         @keyframes spin {
             100% {
                 transform: rotate(360deg);
@@ -135,11 +143,12 @@
         </div>
         <div class="form-section">
             <h2>Wyślij wiadomość</h2>
-            <form action="mailto:kamil.barnas@gmail.com" method="post" enctype="text/plain">
+            <form id="contactForm">
                 <label for="message">Wiadomość:</label>
                 <textarea id="message" name="message" rows="4" placeholder="Napisz swoją wiadomość..." required></textarea>
-                <button type="submit">Wyślij</button>
+                <button type="button" onclick="sendMessage()">Wyślij</button>
             </form>
+            <div class="confirmation" id="confirmationMessage">Wiadomość została wysłana. Dziękujemy!</div>
         </div>
     </div>
     <script>
@@ -161,6 +170,37 @@
 
             document.querySelector('h1').innerText = translations[lang].title;
             document.querySelector('p').innerText = translations[lang].message;
+        }
+
+        async function sendMessage() {
+            const message = document.getElementById('message').value;
+
+            if (message.trim() === '') {
+                alert('Proszę wpisać wiadomość.');
+                return;
+            }
+
+            try {
+                const response = await fetch('https://example.com/send-message', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        email: 'kamil.barnas@gmail.com',
+                        message: message
+                    })
+                });
+
+                if (response.ok) {
+                    document.getElementById('confirmationMessage').style.display = 'block';
+                    document.getElementById('contactForm').reset();
+                } else {
+                    alert('Wystąpił problem podczas wysyłania wiadomości. Spróbuj ponownie później.');
+                }
+            } catch (error) {
+                alert('Nie udało się wysłać wiadomości. Sprawdź połączenie z internetem i spróbuj ponownie.');
+            }
         }
     </script>
 </body>
