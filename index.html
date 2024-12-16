@@ -84,6 +84,50 @@
             line-height: 1.5;
         }
 
+        .form-section {
+            margin-top: 2em;
+            padding: 1.5em;
+            background: #3a3a56;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+            text-align: left;
+        }
+
+        .form-section form {
+            display: flex;
+            flex-direction: column;
+            gap: 1em;
+        }
+
+        .form-section label {
+            font-size: 1em;
+            color: #b0b0d0;
+        }
+
+        .form-section input, .form-section textarea {
+            padding: 0.8em;
+            border: none;
+            border-radius: 8px;
+            background: #2d2d44;
+            color: #ffffff;
+            font-size: 1em;
+        }
+
+        .form-section button {
+            background: #505072;
+            color: #ffffff;
+            border: none;
+            border-radius: 8px;
+            padding: 0.8em;
+            cursor: pointer;
+            font-size: 1em;
+            transition: background 0.3s;
+        }
+
+        .form-section button:hover {
+            background: #707092;
+        }
+
         @keyframes spin {
             100% {
                 transform: rotate(360deg);
@@ -103,6 +147,21 @@
         </div>
         <div class="chatgpt">
             <strong>ChatGPT:</strong> Cześć! Jeśli masz pytania lub potrzebujesz wsparcia, możesz skontaktować się z nami. Czekamy na Ciebie!
+        </div>
+        <div class="form-section">
+            <h2>Skontaktuj się z nami</h2>
+            <form>
+                <label for="name">Imię i nazwisko:</label>
+                <input type="text" id="name" name="name" placeholder="Wpisz swoje imię" required>
+
+                <label for="email">Adres e-mail:</label>
+                <input type="email" id="email" name="email" placeholder="Wpisz swój e-mail" required>
+
+                <label for="message">Wiadomość:</label>
+                <textarea id="message" name="message" rows="4" placeholder="Napisz swoją wiadomość" required></textarea>
+
+                <button type="submit">Wyślij</button>
+            </form>
         </div>
     </div>
     <script>
