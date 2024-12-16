@@ -14,9 +14,9 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh;
+            min-height: 100vh;
             text-align: center;
-            overflow: hidden;
+            overflow-x: hidden;
         }
 
         .container {
@@ -133,6 +133,13 @@
         }
 
         @media (max-width: 600px) {
+            body {
+                flex-direction: column;
+                align-items: flex-start;
+                padding: 1em;
+                overflow-y: auto;
+            }
+
             h1 {
                 font-size: 1.5em;
             }
@@ -143,6 +150,14 @@
 
             .form-section button {
                 font-size: 0.9em;
+            }
+
+            .container {
+                padding: 1.5em;
+            }
+
+            .language-switch {
+                gap: 0.5em;
             }
         }
     </style>
