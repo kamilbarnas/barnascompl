@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="pl">
 <head>
+    <meta name="google-site-verification" content="KSlESp9i557tIbQPf9hPZZQYeFRVKh1gkkR44gBhJmY" />
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Strona w budowie</title>
@@ -40,6 +41,28 @@
             font-weight: 400;
             color: #b0b0d0;
             margin-bottom: 1.5em;
+        }
+
+        .language-switch {
+            display: flex;
+            justify-content: center;
+            gap: 1em;
+            flex-wrap: wrap;
+        }
+
+        .language-switch button {
+            background: #3a3a56;
+            color: #ffffff;
+            border: none;
+            border-radius: 8px;
+            padding: 0.5em 1em;
+            cursor: pointer;
+            font-size: 1em;
+            transition: background 0.3s;
+        }
+
+        .language-switch button:hover {
+            background: #505072;
         }
 
         .loader {
@@ -137,58 +160,85 @@
                 width: 100%;
                 box-sizing: border-box;
             }
+
+            .language-switch {
+                gap: 0.5em;
+            }
         }
     </style>
-    <script type="text/javascript" src="https://cdn.emailjs.com/dist/email.min.js"></script>
-    <script>
-        (function(){
-            emailjs.init("kamilb"); // Inicjalizacja z Twoim USER_ID
-        })();
-
-        async function sendMessage() {
-            const message = document.getElementById('message').value.trim();
-
-            if (message === '') {
-                alert('Proszę wpisać treść wiadomości.');
-                return;
-            }
-
-            try {
-                const templateParams = {
-                    from_name: 'Kamil Barnas', // Możesz zmienić na dynamiczne dane
-                    message: message,
-                    reply_to: 'kamil.barnas@gmail.com' // Twój adres zwrotny
-                };
-
-                const response = await emailjs.send('service_u6en189', 'template_k1eo7qn', templateParams);
-
-                if (response.status === 200) {
-                    document.getElementById('confirmationMessage').style.display = 'block';
-                    document.getElementById('contactForm').reset();
-                    alert('Wiadomość została wysłana pomyślnie. Dziękuję!');
-                } else {
-                    alert('Wystąpił problem podczas wysyłania wiadomości. Proszę spróbować ponownie później.');
-                }
-            } catch (error) {
-                alert('Nie udało się wysłać wiadomości. Proszę sprawdzić połączenie z internetem i spróbować ponownie.');
-            }
-        }
-    </script>
 </head>
 <body>
     <div class="container">
         <h1>Strona w budowie</h1>
-        <p>Pracuję nad czymś niesamowitym. Zapraszam wkrótce!</p>
+        <p>Pracujemy nad czymś niesamowitym. Zapraszamy wkrótce!</p>
         <div class="loader"></div>
+        <div class="language-switch">
+            <button onclick="changeLanguage('pl')">Polski</button>
+            <button onclick="changeLanguage('en')">English</button>
+            <button onclick="changeLanguage('de')">Deutsch</button>
+        </div>
         <div class="form-section">
             <h2 id="formTitle">Wyślij wiadomość</h2>
             <form id="contactForm">
-                <label for="message" id="labelMessage">Treść wiadomości:</label>
+                <label for="message" id="labelMessage">Wiadomość:</label>
                 <textarea id="message" name="message" rows="4" placeholder="Napisz swoją wiadomość..." required></textarea>
                 <button type="button" id="sendButton" onclick="sendMessage()">Wyślij</button>
             </form>
-            <div class="confirmation" id="confirmationMessage">Wiadomość została wysłana pomyślnie. Dziękuję!</div>
         </div>
     </div>
+    <script>
+        function changeLanguage(lang) {
+            const translations = {
+                pl: {
+                    title: "Strona w budowie",
+                    message: "Pracujemy nad czymś niesamowitym. Zapraszamy wkrótce!",
+                    formTitle: "Wyślij wiadomość",
+                    labelMessage: "Wiadomość:",
+                    placeholder: "Napisz swoją wiadomość...",
+                    sendButton: "Wyślij"
+                },
+                en: {
+                    title: "Website Under Construction",
+                    message: "We are working on something amazing. Stay tuned!",
+                    formTitle: "Send a Message",
+                    labelMessage: "Message:",
+                    placeholder: "Write your message...",
+                    sendButton: "Send"
+                },
+                de: {
+                    title: "Webseite im Aufbau",
+                    message: "Wir arbeiten an etwas Unglaublichem. Besuchen Sie uns bald wieder!",
+                    formTitle: "Nachricht senden",
+                    labelMessage: "Nachricht:",
+                    placeholder: "Schreiben Sie Ihre Nachricht...",
+                    sendButton: "Senden"
+                }
+            };
+
+            document.querySelector('h1').innerText = translations[lang].title;
+            document.querySelector('p').innerText = translations[lang].message;
+            document.getElementById('formTitle').innerText = translations[lang].formTitle;
+            document.getElementById('labelMessage').innerText = translations[lang].labelMessage;
+            document.getElementById('message').placeholder = translations[lang].placeholder;
+            document.getElementById('sendButton').innerText = translations[lang].sendButton;
+        }
+
+        function sendMessage() {
+            const message = document.getElementById('message').value;
+
+            if (message.trim() === '') {
+                alert('Proszę wpisać wiadomość.');
+                return;
+            }
+
+            // Utwórz link mailto z predefiniowanym odbiorcą, tematem i treścią wiadomości
+            const email = "barnas@barnas.com.pl"; // Zastąp odpowiednim adresem
+            const subject = encodeURIComponent("Nowa wiadomość ze strony");
+            const body = encodeURIComponent(message);
+
+            // Otwórz domyślnego klienta pocztowego
+            window.location.href = `mailto:${email}?subject=${subject}&body=${body}`;
+        }
+    </script>
 </body>
 </html>
