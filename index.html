@@ -29,49 +29,6 @@
             width: 90%;
         }
 
-        .flags {
-            position: absolute;
-            top: 1em;
-            right: 1em;
-            display: flex;
-            gap: 0.5em;
-        }
-
-        .flags img {
-            width: 32px;
-            height: 32px;
-            cursor: pointer;
-            border-radius: 50%;
-            transition: transform 0.3s;
-        }
-
-        .flags img:hover {
-            transform: scale(1.1);
-        }
-
-        h1 {
-            font-size: 2em;
-            font-weight: 600;
-            margin-bottom: 0.5em;
-        }
-
-        p {
-            font-size: 1.2em;
-            font-weight: 400;
-            color: #b0b0d0;
-            margin-bottom: 1.5em;
-        }
-
-        .loader {
-            margin: 1em auto;
-            width: 40px;
-            height: 40px;
-            border: 4px solid rgba(255, 255, 255, 0.2);
-            border-top: 4px solid #ffffff;
-            border-radius: 50%;
-            animation: spin 1s linear infinite;
-        }
-
         .form-section {
             margin-top: 2em;
             text-align: left;
@@ -124,79 +81,30 @@
             color: #a0ffa0;
             display: none;
         }
-
-        @keyframes spin {
-            100% {
-                transform: rotate(360deg);
-            }
-        }
     </style>
 </head>
 <body>
-    <div class="flags">
-        <img src="https://flagcdn.com/w40/pl.png" alt="Polski" onclick="changeLanguage('pl')">
-        <img src="https://flagcdn.com/w40/gb.png" alt="English" onclick="changeLanguage('en')">
-        <img src="https://flagcdn.com/w40/de.png" alt="Deutsch" onclick="changeLanguage('de')">
-    </div>
-
     <div class="container">
-        <h1 id="title">Strona w budowie</h1>
-        <p id="message">Przyszłość nadchodzi! Nasz zespół pracuje nad czymś wyjątkowym. Zajrzyj do nas już wkrótce.</p>
-        <div class="loader"></div>
+        <h1>Strona w budowie</h1>
+        <p>Przyszłość nadchodzi! Nasz zespół pracuje nad czymś wyjątkowym. Zajrzyj do nas już wkrótce.</p>
         <div class="form-section">
-            <h2 id="formTitle">Wyślij wiadomość</h2>
+            <h2>Wyślij wiadomość</h2>
             <form id="contactForm">
-                <label for="message" id="labelMessage">Wiadomość:</label>
+                <label for="message">Wiadomość:</label>
                 <textarea id="messageInput" name="message" rows="4" placeholder="Napisz swoją wiadomość..." required></textarea>
-                <button type="button" id="sendButton" onclick="sendMessage()">Wyślij</button>
+                <button type="button" onclick="sendMessage()">Wyślij</button>
             </form>
             <div class="confirmation" id="confirmationMessage">Wiadomość została wysłana. Dziękujemy!</div>
         </div>
     </div>
 
+    <script src="https://cdn.jsdelivr.net/npm/emailjs-com@2.6.4/dist/email.min.js"></script>
     <script>
-        function changeLanguage(lang) {
-            const translations = {
-                pl: {
-                    title: "Strona w budowie",
-                    message: "Przyszłość nadchodzi! Nasz zespół pracuje nad czymś wyjątkowym. Zajrzyj do nas już wkrótce.",
-                    formTitle: "Wyślij wiadomość",
-                    labelMessage: "Wiadomość:",
-                    placeholder: "Napisz swoją wiadomość...",
-                    sendButton: "Wyślij",
-                    confirmation: "Wiadomość została wysłana. Dziękujemy!"
-                },
-                en: {
-                    title: "Website Under Construction",
-                    message: "The future is coming! Our team is working on something amazing. Check back soon.",
-                    formTitle: "Send a Message",
-                    labelMessage: "Message:",
-                    placeholder: "Write your message...",
-                    sendButton: "Send",
-                    confirmation: "Message sent successfully. Thank you!"
-                },
-                de: {
-                    title: "Webseite im Aufbau",
-                    message: "Die Zukunft kommt! Unser Team arbeitet an etwas Außergewöhnlichem. Schauen Sie bald wieder vorbei.",
-                    formTitle: "Nachricht senden",
-                    labelMessage: "Nachricht:",
-                    placeholder: "Schreiben Sie Ihre Nachricht...",
-                    sendButton: "Senden",
-                    confirmation: "Nachricht erfolgreich gesendet. Vielen Dank!"
-                }
-            };
-
-            document.getElementById('title').innerText = translations[lang].title;
-            document.getElementById('message').innerText = translations[lang].message;
-            document.getElementById('formTitle').innerText = translations[lang].formTitle;
-            document.getElementById('labelMessage').innerText = translations[lang].labelMessage;
-            document.getElementById('messageInput').placeholder = translations[lang].placeholder;
-            document.getElementById('sendButton').innerText = translations[lang].sendButton;
-            document.getElementById('confirmationMessage').innerText = translations[lang].confirmation;
-        }
+        (function () {
+            emailjs.init("YOUR_USER_ID"); // Wstaw swój User ID z EmailJS
+        })();
 
         function sendMessage() {
-            const scriptURL = 'https://script.google.com/macros/s/kamil.barnas@gmail.com/exec'; // Replace YOUR_SCRIPT_ID with your Apps Script ID
             const message = document.getElementById('messageInput').value;
 
             if (message.trim() === '') {
@@ -204,20 +112,20 @@
                 return;
             }
 
-            fetch(scriptURL, {
-                method: 'POST',
-                body: new URLSearchParams({ message }),
-            })
-                .then(response => {
-                    if (response.ok) {
-                        document.getElementById('confirmationMessage').style.display = 'block';
-                        document.getElementById('contactForm').reset();
-                    } else {
-                        alert('Wystąpił problem podczas wysyłania wiadomości. Spróbuj ponownie później.');
-                    }
+            const serviceID = 'default_service';
+            const templateID = 'template_id'; // Wstaw swój Template ID z EmailJS
+            const params = {
+                message: message,
+                to_email: 'kamil.barnas@gmail.com',
+            };
+
+            emailjs.send(serviceID, templateID, params)
+                .then(() => {
+                    document.getElementById('confirmationMessage').style.display = 'block';
+                    document.getElementById('contactForm').reset();
                 })
-                .catch(error => {
-                    alert('Nie udało się wysłać wiadomości. Sprawdź połączenie z internetem i spróbuj ponownie.');
+                .catch(() => {
+                    alert('Wystąpił problem podczas wysyłania wiadomości. Spróbuj ponownie później.');
                 });
         }
     </script>
