@@ -29,6 +29,26 @@
             width: 90%;
         }
 
+        .flags {
+            position: absolute;
+            top: 1em;
+            right: 1em;
+            display: flex;
+            gap: 0.5em;
+        }
+
+        .flags img {
+            width: 32px;
+            height: 32px;
+            cursor: pointer;
+            border-radius: 50%;
+            transition: transform 0.3s;
+        }
+
+        .flags img:hover {
+            transform: scale(1.1);
+        }
+
         .form-section {
             margin-top: 2em;
             text-align: left;
@@ -84,15 +104,21 @@
     </style>
 </head>
 <body>
+    <div class="flags">
+        <img src="https://flagcdn.com/w40/pl.png" alt="Polski" onclick="changeLanguage('pl')">
+        <img src="https://flagcdn.com/w40/gb.png" alt="English" onclick="changeLanguage('en')">
+        <img src="https://flagcdn.com/w40/de.png" alt="Deutsch" onclick="changeLanguage('de')">
+    </div>
+
     <div class="container">
-        <h1>Strona w budowie</h1>
-        <p>Przyszłość nadchodzi! Nasz zespół pracuje nad czymś wyjątkowym. Zajrzyj do nas już wkrótce.</p>
+        <h1 id="title">Strona w budowie</h1>
+        <p id="message">Przyszłość nadchodzi! Nasz zespół pracuje nad czymś wyjątkowym. Zajrzyj do nas już wkrótce.</p>
         <div class="form-section">
-            <h2>Wyślij wiadomość</h2>
+            <h2 id="formTitle">Wyślij wiadomość</h2>
             <form id="contactForm">
-                <label for="message">Wiadomość:</label>
+                <label for="message" id="labelMessage">Wiadomość:</label>
                 <textarea id="messageInput" name="message" rows="4" placeholder="Napisz swoją wiadomość..." required></textarea>
-                <button type="button" onclick="sendMessage()">Wyślij</button>
+                <button type="button" id="sendButton" onclick="sendMessage()">Wyślij</button>
             </form>
             <div class="confirmation" id="confirmationMessage">Wiadomość została wysłana. Dziękujemy!</div>
         </div>
@@ -103,6 +129,46 @@
         (function () {
             emailjs.init("YOUR_USER_ID"); // Wstaw swój User ID z EmailJS
         })();
+
+        function changeLanguage(lang) {
+            const translations = {
+                pl: {
+                    title: "Strona w budowie",
+                    message: "Przyszłość nadchodzi! Nasz zespół pracuje nad czymś wyjątkowym. Zajrzyj do nas już wkrótce.",
+                    formTitle: "Wyślij wiadomość",
+                    labelMessage: "Wiadomość:",
+                    placeholder: "Napisz swoją wiadomość...",
+                    sendButton: "Wyślij",
+                    confirmation: "Wiadomość została wysłana. Dziękujemy!"
+                },
+                en: {
+                    title: "Website Under Construction",
+                    message: "The future is coming! Our team is working on something amazing. Check back soon.",
+                    formTitle: "Send a Message",
+                    labelMessage: "Message:",
+                    placeholder: "Write your message...",
+                    sendButton: "Send",
+                    confirmation: "Message sent successfully. Thank you!"
+                },
+                de: {
+                    title: "Webseite im Aufbau",
+                    message: "Die Zukunft kommt! Unser Team arbeitet an etwas Außergewöhnlichem. Schauen Sie bald wieder vorbei.",
+                    formTitle: "Nachricht senden",
+                    labelMessage: "Nachricht:",
+                    placeholder: "Schreiben Sie Ihre Nachricht...",
+                    sendButton: "Senden",
+                    confirmation: "Nachricht erfolgreich gesendet. Vielen Dank!"
+                }
+            };
+
+            document.getElementById('title').innerText = translations[lang].title;
+            document.getElementById('message').innerText = translations[lang].message;
+            document.getElementById('formTitle').innerText = translations[lang].formTitle;
+            document.getElementById('labelMessage').innerText = translations[lang].labelMessage;
+            document.getElementById('messageInput').placeholder = translations[lang].placeholder;
+            document.getElementById('sendButton').innerText = translations[lang].sendButton;
+            document.getElementById('confirmationMessage').innerText = translations[lang].confirmation;
+        }
 
         function sendMessage() {
             const message = document.getElementById('messageInput').value;
