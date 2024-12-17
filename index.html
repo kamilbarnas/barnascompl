@@ -165,7 +165,7 @@
                 if (response.status === 200) {
                     document.getElementById('confirmationMessage').style.display = 'block';
                     document.getElementById('contactForm').reset();
-                    alert('Wiadomość została wysłana pomyślnie. Dziękujemy!');
+                    alert('Wiadomość została wysłana pomyślnie. Dziękuję!');
                 } else {
                     alert('Wystąpił problem podczas wysyłania wiadomości. Proszę spróbować ponownie później.');
                 }
@@ -178,7 +178,7 @@
 <body>
     <div class="container">
         <h1>Strona w budowie</h1>
-        <p>Pracujemy nad czymś niesamowitym. Zapraszamy wkrótce!</p>
+        <p>Pracuję nad czymś niesamowitym. Zapraszam wkrótce!</p>
         <div class="loader"></div>
         <div class="form-section">
             <h2 id="formTitle">Wyślij wiadomość</h2>
@@ -187,7 +187,7 @@
                 <textarea id="message" name="message" rows="4" placeholder="Napisz swoją wiadomość..." required></textarea>
                 <button type="button" id="sendButton" onclick="sendMessage()">Wyślij</button>
             </form>
-            <div class="confirmation" id="confirmationMessage">Wiadomość została wysłana pomyślnie. Dziękujemy!</div>
+            <div class="confirmation" id="confirmationMessage">Wiadomość została wysłana pomyślnie. Dziękuję!</div>
         </div>
     </div>
 </body>
