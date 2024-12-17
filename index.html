@@ -49,6 +49,29 @@
             transform: scale(1.1);
         }
 
+        h1 {
+            font-size: 2em;
+            font-weight: 600;
+            margin-bottom: 0.5em;
+        }
+
+        p {
+            font-size: 1.2em;
+            font-weight: 400;
+            color: #b0b0d0;
+            margin-bottom: 1.5em;
+        }
+
+        .loader {
+            margin: 1em auto;
+            width: 40px;
+            height: 40px;
+            border: 4px solid rgba(255, 255, 255, 0.2);
+            border-top: 4px solid #ffffff;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
         .form-section {
             margin-top: 2em;
             text-align: left;
@@ -101,6 +124,12 @@
             color: #a0ffa0;
             display: none;
         }
+
+        @keyframes spin {
+            100% {
+                transform: rotate(360deg);
+            }
+        }
     </style>
 </head>
 <body>
@@ -113,6 +142,7 @@
     <div class="container">
         <h1 id="title">Strona w budowie</h1>
         <p id="message">Przyszłość nadchodzi! Nasz zespół pracuje nad czymś wyjątkowym. Zajrzyj do nas już wkrótce.</p>
+        <div class="loader"></div>
         <div class="form-section">
             <h2 id="formTitle">Wyślij wiadomość</h2>
             <form id="contactForm">
@@ -124,12 +154,7 @@
         </div>
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/emailjs-com@2.6.4/dist/email.min.js"></script>
     <script>
-        (function () {
-            emailjs.init("YOUR_USER_ID"); // Wstaw swój User ID z EmailJS
-        })();
-
         function changeLanguage(lang) {
             const translations = {
                 pl: {
@@ -171,6 +196,7 @@
         }
 
         function sendMessage() {
+            const scriptURL = 'https://script.google.com/macros/s/kamil.barnas@gmail.com/exec'; // Replace YOUR_SCRIPT_ID with your Apps Script ID
             const message = document.getElementById('messageInput').value;
 
             if (message.trim() === '') {
@@ -178,20 +204,20 @@
                 return;
             }
 
-            const serviceID = 'default_service';
-            const templateID = 'template_id'; // Wstaw swój Template ID z EmailJS
-            const params = {
-                message: message,
-                to_email: 'kamil.barnas@gmail.com',
-            };
-
-            emailjs.send(serviceID, templateID, params)
-                .then(() => {
-                    document.getElementById('confirmationMessage').style.display = 'block';
-                    document.getElementById('contactForm').reset();
+            fetch(scriptURL, {
+                method: 'POST',
+                body: new URLSearchParams({ message }),
+            })
+                .then(response => {
+                    if (response.ok) {
+                        document.getElementById('confirmationMessage').style.display = 'block';
+                        document.getElementById('contactForm').reset();
+                    } else {
+                        alert('Wystąpił problem podczas wysyłania wiadomości. Spróbuj ponownie później.');
+                    }
                 })
-                .catch(() => {
-                    alert('Wystąpił problem podczas wysyłania wiadomości. Spróbuj ponownie później.');
+                .catch(error => {
+                    alert('Nie udało się wysłać wiadomości. Sprawdź połączenie z internetem i spróbuj ponownie.');
                 });
         }
     </script>
