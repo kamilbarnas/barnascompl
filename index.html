@@ -129,11 +129,11 @@
     </style>
 </head>
 <body>
-    <img src="moon_icon.png" alt="Zmień tryb" class="theme-switcher" id="themeSwitcher">
+    <img src="https://cdn-icons-png.flaticon.com/512/263/263623.png" alt="Zmień tryb" class="theme-switcher" id="themeSwitcher">
     <div class="language-switch">
-        <img src="pl_flag.png" alt="Polski" onclick="changeLanguage('pl')">
-        <img src="en_flag.png" alt="English" onclick="changeLanguage('en')">
-        <img src="de_flag.png" alt="Deutsch" onclick="changeLanguage('de')">
+        <img src="https://flagcdn.com/w40/pl.png" alt="Polski" onclick="changeLanguage('pl')">
+        <img src="https://flagcdn.com/w40/gb.png" alt="English" onclick="changeLanguage('en')">
+        <img src="https://flagcdn.com/w40/de.png" alt="Deutsch" onclick="changeLanguage('de')">
     </div>
     <div class="container">
         <h1>Strona w budowie</h1>
@@ -153,7 +153,7 @@
         themeSwitcher.addEventListener("click", () => {
             isDarkMode = !isDarkMode;
             document.body.setAttribute("data-theme", isDarkMode ? "dark" : "light");
-            themeSwitcher.src = isDarkMode ? "moon_icon.png" : "sun_icon.png";
+            themeSwitcher.src = isDarkMode ? "https://cdn-icons-png.flaticon.com/512/263/263623.png" : "https://cdn-icons-png.flaticon.com/512/869/869869.png";
         });
 
         document.body.setAttribute("data-theme", "dark");
