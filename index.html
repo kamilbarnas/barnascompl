@@ -4,6 +4,10 @@
     <meta name="google-site-verification" content="KSlESp9i557tIbQPf9hPZZQYeFRVKh1gkkR44gBhJmY" />
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Strona w budowie, wracaj wkrótce, aby zobaczyć nasze nowe funkcje!">
+    <meta name="keywords" content="strona w budowie, nowa strona, projekt w toku">
+    <meta name="author" content="Kamil Barnas">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
     <title>Strona w budowie</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
     <style>
@@ -120,12 +124,23 @@
             background: #707092;
         }
 
-        .confirmation {
+        .social-icons {
             margin-top: 1em;
-            text-align: center;
+            display: flex;
+            justify-content: center;
+            gap: 1em;
+        }
+
+        .social-icons a {
+            color: #ffffff;
+            text-decoration: none;
             font-size: 1.2em;
+        }
+
+        #countdown {
+            margin: 1em 0;
+            font-size: 1.5em;
             color: #a0ffa0;
-            display: none;
         }
 
         @keyframes spin {
@@ -172,6 +187,7 @@
         <h1>Strona w budowie</h1>
         <p>Pracujemy nad czymś niesamowitym. Zapraszamy wkrótce!</p>
         <div class="loader"></div>
+        <div id="countdown"></div>
         <div class="language-switch">
             <button onclick="changeLanguage('pl')">Polski</button>
             <button onclick="changeLanguage('en')">English</button>
@@ -179,14 +195,45 @@
         </div>
         <div class="form-section">
             <h2 id="formTitle">Wyślij wiadomość</h2>
-            <form id="contactForm">
+            <form action="https://formspree.io/f/your-email" method="POST">
                 <label for="message" id="labelMessage">Wiadomość:</label>
                 <textarea id="message" name="message" rows="4" placeholder="Napisz swoją wiadomość..." required></textarea>
-                <button type="button" id="sendButton" onclick="sendMessage()">Wyślij</button>
+                <button type="submit" id="sendButton">Wyślij</button>
             </form>
         </div>
+        <div class="social-icons">
+            <a href="https://facebook.com" target="_blank">Facebook</a>
+            <a href="https://instagram.com" target="_blank">Instagram</a>
+        </div>
     </div>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-XXXXXXXXX-X"></script>
     <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'UA-XXXXXXXXX-X');
+
+        const targetDate = new Date("2025-01-01T00:00:00").getTime();
+        const countdown = document.getElementById("countdown");
+
+        function updateCountdown() {
+            const now = new Date().getTime();
+            const timeLeft = targetDate - now;
+            if (timeLeft < 0) {
+                countdown.innerHTML = "Strona jest gotowa!";
+                return;
+            }
+
+            const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+
+            countdown.innerHTML = `Za ${days} dni, ${hours} godzin, ${minutes} minut, ${seconds} sekund`;
+        }
+
+        setInterval(updateCountdown, 1000);
+
         function changeLanguage(lang) {
             const translations = {
                 pl: {
@@ -221,23 +268,6 @@
             document.getElementById('labelMessage').innerText = translations[lang].labelMessage;
             document.getElementById('message').placeholder = translations[lang].placeholder;
             document.getElementById('sendButton').innerText = translations[lang].sendButton;
-        }
-
-        function sendMessage() {
-            const message = document.getElementById('message').value;
-
-            if (message.trim() === '') {
-                alert('Proszę wpisać wiadomość.');
-                return;
-            }
-
-            // Utwórz link mailto z predefiniowanym odbiorcą, tematem i treścią wiadomości
-            const email = "barnas@barnas.com.pl"; // Zastąp odpowiednim adresem
-            const subject = encodeURIComponent("Nowa wiadomość ze strony");
-            const body = encodeURIComponent(message);
-
-            // Otwórz domyślnego klienta pocztowego
-            window.location.href = `mailto:${email}?subject=${subject}&body=${body}`;
         }
     </script>
 </body>
