@@ -4,7 +4,7 @@
     <meta name="google-site-verification" content="KSlESp9i557tIbQPf9hPZZQYeFRVKh1gkkR44gBhJmY" />
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Strona w budowie, wracaj wkrótce, aby zobaczyć nasze nowe funkcje!">
+    <meta name="description" content="Strona w budowie, wracaj wkrótce, aby zobaczyæ nasze nowe funkcje!">
     <meta name="keywords" content="strona w budowie, nowa strona, projekt w toku">
     <meta name="author" content="Kamil Barnas">
     <link rel="icon" href="favicon.ico" type="image/x-icon">
@@ -167,26 +167,35 @@
                 overflow-y: auto;
             }
 
+            .container {
+                width: 100%;
+                max-width: 95%;
+                padding: 1em;
+                box-sizing: border-box;
+            }
+
             h1 {
-                font-size: 1.5em;
+                font-size: 1.4em;
+                margin-bottom: 0.5em;
             }
 
             p {
                 font-size: 1em;
+                margin-bottom: 1em;
+            }
+
+            .language-switch {
+                flex-direction: column;
+                gap: 0.5em;
+            }
+
+            .form-section textarea {
+                font-size: 0.9em;
+                height: auto;
             }
 
             .form-section button {
                 font-size: 0.9em;
-            }
-
-            .container {
-                padding: 1.5em;
-                width: 100%;
-                box-sizing: border-box;
-            }
-
-            .language-switch {
-                gap: 0.5em;
             }
         }
     </style>
@@ -194,7 +203,7 @@
 <body>
     <div class="container">
         <h1>Strona w budowie</h1>
-        <p>Pracujemy nad czymś niesamowitym. Zapraszamy wkrótce!</p>
+        <p>Pracujemy nad czymœ niesamowitym. Zapraszamy wkrótce!</p>
         <div class="loader"></div>
         <div id="countdown"></div>
         <div class="language-switch">
@@ -203,11 +212,11 @@
             <button onclick="changeLanguage('de')">Deutsch</button>
         </div>
         <div class="form-section">
-            <h2 id="formTitle">Wyślij wiadomość</h2>
+            <h2 id="formTitle">Wyœlij wiadomoœæ</h2>
             <form action="https://formspree.io/f/manyrnby" method="POST">
-                <label for="message" id="labelMessage">Wiadomość:</label>
-                <textarea id="message" name="message" rows="4" placeholder="Napisz swoją wiadomość..." required></textarea>
-                <button type="submit" id="sendButton">Wyślij</button>
+                <label for="message" id="labelMessage">Wiadomoœæ:</label>
+                <textarea id="message" name="message" rows="4" placeholder="Napisz swoj¹ wiadomoœæ..." required></textarea>
+                <button type="submit" id="sendButton">Wyœlij</button>
             </form>
         </div>
     </div>
@@ -246,11 +255,11 @@
         const translations = {
             pl: {
                 title: "Strona w budowie",
-                message: "Pracujemy nad czymś niesamowitym. Zapraszamy wkrótce!",
-                formTitle: "Wyślij wiadomość",
-                labelMessage: "Wiadomość:",
-                placeholder: "Napisz swoją wiadomość...",
-                sendButton: "Wyślij",
+                message: "Pracujemy nad czymœ niesamowitym. Zapraszamy wkrótce!",
+                formTitle: "Wyœlij wiadomoœæ",
+                labelMessage: "Wiadomoœæ:",
+                placeholder: "Napisz swoj¹ wiadomoœæ...",
+                sendButton: "Wyœlij",
                 countdown: "Za {days} dni, {hours} godzin, {minutes} minut, {seconds} sekund"
             },
             en: {
