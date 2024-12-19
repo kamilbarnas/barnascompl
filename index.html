@@ -32,6 +32,11 @@
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
             max-width: 500px;
             width: 90%;
+            transition: transform 0.3s ease;
+        }
+
+        .container:hover {
+            transform: scale(1.02);
         }
 
         h1 {
@@ -124,19 +129,6 @@
             background: #707092;
         }
 
-        .social-icons {
-            margin-top: 1em;
-            display: flex;
-            justify-content: center;
-            gap: 1em;
-        }
-
-        .social-icons a {
-            color: #ffffff;
-            text-decoration: none;
-            font-size: 1.2em;
-        }
-
         #countdown {
             margin: 1em 0;
             font-size: 1.5em;
@@ -184,6 +176,7 @@
 </head>
 <body>
     <div class="container">
+        <img src="logo.png" alt="Logo strony" style="max-width: 100px; margin-bottom: 1em;">
         <h1>Strona w budowie</h1>
         <p>Pracujemy nad czymś niesamowitym. Zapraszamy wkrótce!</p>
         <div class="loader"></div>
@@ -195,15 +188,11 @@
         </div>
         <div class="form-section">
             <h2 id="formTitle">Wyślij wiadomość</h2>
-            <form action="https://formspree.io/f/your-email" method="POST">
+            <form action="https://formspree.io/f/example-hash" method="POST">
                 <label for="message" id="labelMessage">Wiadomość:</label>
                 <textarea id="message" name="message" rows="4" placeholder="Napisz swoją wiadomość..." required></textarea>
                 <button type="submit" id="sendButton">Wyślij</button>
             </form>
-        </div>
-        <div class="social-icons">
-            <a href="https://facebook.com" target="_blank">Facebook</a>
-            <a href="https://instagram.com" target="_blank">Instagram</a>
         </div>
     </div>
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-XXXXXXXXX-X"></script>
