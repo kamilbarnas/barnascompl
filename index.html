@@ -130,8 +130,9 @@
         }
 
         #countdown {
-            margin: 1em 0;
-            font-size: 1.5em;
+            margin: 1.5em 0;
+            font-size: 1.2em;
+            font-weight: 400;
             color: #b0b0d0;
         }
 
@@ -232,46 +233,60 @@
             const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
             const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
 
-            countdown.innerHTML = `Za ${days} dni, ${hours} godzin, ${minutes} minut, ${seconds} sekund`;
+            countdown.innerHTML = translations[currentLang].countdown
+                .replace("{days}", days)
+                .replace("{hours}", hours)
+                .replace("{minutes}", minutes)
+                .replace("{seconds}", seconds);
         }
 
         setInterval(updateCountdown, 1000);
 
-        function changeLanguage(lang) {
-            const translations = {
-                pl: {
-                    title: "Strona w budowie",
-                    message: "Pracujemy nad czymś niesamowitym. Zapraszamy wkrótce!",
-                    formTitle: "Wyślij wiadomość",
-                    labelMessage: "Wiadomość:",
-                    placeholder: "Napisz swoją wiadomość...",
-                    sendButton: "Wyślij"
-                },
-                en: {
-                    title: "Website Under Construction",
-                    message: "We are working on something amazing. Stay tuned!",
-                    formTitle: "Send a Message",
-                    labelMessage: "Message:",
-                    placeholder: "Write your message...",
-                    sendButton: "Send"
-                },
-                de: {
-                    title: "Webseite im Aufbau",
-                    message: "Wir arbeiten an etwas Unglaublichem. Besuchen Sie uns bald wieder!",
-                    formTitle: "Nachricht senden",
-                    labelMessage: "Nachricht:",
-                    placeholder: "Schreiben Sie Ihre Nachricht...",
-                    sendButton: "Senden"
-                }
-            };
+        const translations = {
+            pl: {
+                title: "Strona w budowie",
+                message: "Pracujemy nad czymś niesamowitym. Zapraszamy wkrótce!",
+                formTitle: "Wyślij wiadomość",
+                labelMessage: "Wiadomość:",
+                placeholder: "Napisz swoją wiadomość...",
+                sendButton: "Wyślij",
+                countdown: "Za {days} dni, {hours} godzin, {minutes} minut, {seconds} sekund"
+            },
+            en: {
+                title: "Website Under Construction",
+                message: "We are working on something amazing. Stay tuned!",
+                formTitle: "Send a Message",
+                labelMessage: "Message:",
+                placeholder: "Write your message...",
+                sendButton: "Send",
+                countdown: "In {days} days, {hours} hours, {minutes} minutes, {seconds} seconds"
+            },
+            de: {
+                title: "Webseite im Aufbau",
+                message: "Wir arbeiten an etwas Unglaublichem. Besuchen Sie uns bald wieder!",
+                formTitle: "Nachricht senden",
+                labelMessage: "Nachricht:",
+                placeholder: "Schreiben Sie Ihre Nachricht...",
+                sendButton: "Senden",
+                countdown: "In {days} Tagen, {hours} Stunden, {minutes} Minuten, {seconds} Sekunden"
+            }
+        };
 
-            document.querySelector('h1').innerText = translations[lang].title;
-            document.querySelector('p').innerText = translations[lang].message;
-            document.getElementById('formTitle').innerText = translations[lang].formTitle;
-            document.getElementById('labelMessage').innerText = translations[lang].labelMessage;
-            document.getElementById('message').placeholder = translations[lang].placeholder;
-            document.getElementById('sendButton').innerText = translations[lang].sendButton;
+        let currentLang = 'pl';
+        function changeLanguage(lang) {
+            currentLang = lang;
+            const translation = translations[lang];
+
+            document.querySelector('h1').innerText = translation.title;
+            document.querySelector('p').innerText = translation.message;
+            document.getElementById('formTitle').innerText = translation.formTitle;
+            document.getElementById('labelMessage').innerText = translation.labelMessage;
+            document.getElementById('message').placeholder = translation.placeholder;
+            document.getElementById('sendButton').innerText = translation.sendButton;
+            updateCountdown();
         }
+
+        changeLanguage('pl');
     </script>
 </body>
 </html>
