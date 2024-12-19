@@ -26,10 +26,10 @@
         }
 
         .container {
-            background: #1a1a1a;
+            background: #111111;
             padding: 2em;
             border-radius: 12px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
             max-width: 500px;
             width: 90%;
             transition: transform 0.3s ease;
@@ -61,7 +61,7 @@
         }
 
         .language-switch button {
-            background: #333333;
+            background: #222222;
             color: #ffffff;
             border: none;
             border-radius: 8px;
@@ -72,7 +72,7 @@
         }
 
         .language-switch button:hover {
-            background: #4d4d4d;
+            background: #333333;
         }
 
         .loader {
@@ -88,10 +88,10 @@
         .form-section {
             margin-top: 2em;
             text-align: left;
-            background: #262626;
+            background: #1a1a1a;
             padding: 1.5em;
             border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
         }
 
         .form-section form {
@@ -109,14 +109,14 @@
             padding: 0.8em;
             border: none;
             border-radius: 8px;
-            background: #1a1a1a;
+            background: #222222;
             color: #ffffff;
             font-size: 1em;
             resize: none;
         }
 
         .form-section button {
-            background: #4d4d4d;
+            background: #333333;
             color: #ffffff;
             border: none;
             border-radius: 8px;
@@ -127,7 +127,7 @@
         }
 
         .form-section button:hover {
-            background: #666666;
+            background: #444444;
         }
 
         #countdown {
@@ -234,11 +234,7 @@
             const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
             const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
 
-            countdown.innerHTML = translations[currentLang].countdown
-                .replace("{days}", days)
-                .replace("{hours}", hours)
-                .replace("{minutes}", minutes)
-                .replace("{seconds}", seconds);
+            countdown.innerHTML = `${days} dni, ${hours} godzin, ${minutes} minut, ${seconds} sekund`;
         }
 
         setInterval(updateCountdown, 1000);
@@ -251,7 +247,6 @@
                 labelMessage: "Wiadomość:",
                 placeholder: "Napisz swoją wiadomość...",
                 sendButton: "Wyślij",
-                countdown: "Za {days} dni, {hours} godzin, {minutes} minut, {seconds} sekund"
             },
             en: {
                 title: "Website Under Construction",
@@ -260,7 +255,6 @@
                 labelMessage: "Message:",
                 placeholder: "Write your message...",
                 sendButton: "Send",
-                countdown: "In {days} days, {hours} hours, {minutes} minutes, {seconds} seconds"
             },
             de: {
                 title: "Webseite im Aufbau",
@@ -269,7 +263,6 @@
                 labelMessage: "Nachricht:",
                 placeholder: "Schreiben Sie Ihre Nachricht...",
                 sendButton: "Senden",
-                countdown: "In {days} Tagen, {hours} Stunden, {minutes} Minuten, {seconds} Sekunden"
             }
         };
 
@@ -284,7 +277,6 @@
             document.getElementById('labelMessage').innerText = translation.labelMessage;
             document.getElementById('message').placeholder = translation.placeholder;
             document.getElementById('sendButton').innerText = translation.sendButton;
-            updateCountdown();
         }
 
         changeLanguage('pl');
