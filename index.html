@@ -11,27 +11,44 @@
     <title>Strona w budowie</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
     <style>
+        :root {
+            --background-color: #000000;
+            --text-color: #ffffff;
+            --container-bg: #111111;
+            --secondary-bg: #1a1a1a;
+            --button-bg: #222222;
+            --button-hover-bg: #333333;
+        }
+
+        [data-theme="light"] {
+            --background-color: #ffffff;
+            --text-color: #000000;
+            --container-bg: #f7f7f7;
+            --secondary-bg: #eeeeee;
+            --button-bg: #dddddd;
+            --button-hover-bg: #cccccc;
+        }
+
         body {
             margin: 0;
             font-family: 'Inter', sans-serif;
-            background: #000000;
-            color: #ffffff;
+            background: var(--background-color);
+            color: var(--text-color);
             display: flex;
             justify-content: center;
             align-items: center;
             min-height: 100vh;
             text-align: center;
-            overflow: hidden;
             padding: 0;
         }
 
         .container {
-            background: #111111;
+            background: var(--container-bg);
             padding: 2em;
             border-radius: 12px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
             max-width: 500px;
-            width: 90%;
+            width: 100%;
             transition: transform 0.3s ease;
         }
 
@@ -43,13 +60,13 @@
             font-size: 2em;
             font-weight: 600;
             margin-bottom: 0.5em;
-            color: #e0e0e0;
+            color: var(--text-color);
         }
 
         p {
             font-size: 1.2em;
             font-weight: 400;
-            color: #c0c0c0;
+            color: var(--text-color);
             margin-bottom: 1.5em;
         }
 
@@ -61,8 +78,8 @@
         }
 
         .language-switch button {
-            background: #222222;
-            color: #ffffff;
+            background: var(--button-bg);
+            color: var(--text-color);
             border: none;
             border-radius: 8px;
             padding: 0.5em 1em;
@@ -72,7 +89,7 @@
         }
 
         .language-switch button:hover {
-            background: #333333;
+            background: var(--button-hover-bg);
         }
 
         .loader {
@@ -80,7 +97,7 @@
             width: 40px;
             height: 40px;
             border: 4px solid rgba(255, 255, 255, 0.2);
-            border-top: 4px solid #ffffff;
+            border-top: 4px solid var(--text-color);
             border-radius: 50%;
             animation: spin 1s linear infinite;
         }
@@ -88,7 +105,7 @@
         .form-section {
             margin-top: 2em;
             text-align: left;
-            background: #1a1a1a;
+            background: var(--secondary-bg);
             padding: 1.5em;
             border-radius: 8px;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
@@ -102,22 +119,22 @@
 
         .form-section label {
             font-size: 1em;
-            color: #c0c0c0;
+            color: var(--text-color);
         }
 
         .form-section textarea {
             padding: 0.8em;
             border: none;
             border-radius: 8px;
-            background: #222222;
-            color: #ffffff;
+            background: var(--container-bg);
+            color: var(--text-color);
             font-size: 1em;
             resize: none;
         }
 
         .form-section button {
-            background: #333333;
-            color: #ffffff;
+            background: var(--button-bg);
+            color: var(--text-color);
             border: none;
             border-radius: 8px;
             padding: 0.8em;
@@ -127,14 +144,14 @@
         }
 
         .form-section button:hover {
-            background: #444444;
+            background: var(--button-hover-bg);
         }
 
         #countdown {
             margin: 1.5em 0;
             font-size: 1.2em;
             font-weight: 400;
-            color: #c0c0c0;
+            color: var(--text-color);
         }
 
         @keyframes spin {
@@ -161,8 +178,6 @@
         @media (max-width: 600px) {
             body {
                 padding: 1em;
-                justify-content: center;
-                align-items: center;
                 flex-direction: column;
                 overflow-y: auto;
             }
@@ -181,7 +196,7 @@
 
             .container {
                 padding: 1.5em;
-                width: 100%;
+                width: 90%;
                 box-sizing: border-box;
             }
 
@@ -210,6 +225,7 @@
                 <button type="submit" id="sendButton">Wyślij</button>
             </form>
         </div>
+        <button id="themeSwitcher" style="margin-top: 1em; padding: 0.5em 1em; cursor: pointer;">Zmień tryb</button>
     </div>
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-XXXXXXXXX-X"></script>
     <script>
@@ -280,6 +296,14 @@
         }
 
         changeLanguage('pl');
+
+        const themeSwitcher = document.getElementById("themeSwitcher");
+        themeSwitcher.addEventListener("click", () => {
+            const currentTheme = document.body.getAttribute("data-theme");
+            document.body.setAttribute("data-theme", currentTheme === "light" ? "dark" : "light");
+        });
+
+        document.body.setAttribute("data-theme", "dark"); // Default to dark mode
     </script>
 </body>
 </html>
