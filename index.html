@@ -132,12 +132,27 @@
         #countdown {
             margin: 1em 0;
             font-size: 1.5em;
-            color: #a0ffa0;
+            color: #b0b0d0;
         }
 
         @keyframes spin {
             100% {
                 transform: rotate(360deg);
+            }
+        }
+
+        @media (max-width: 1366px) {
+            .container {
+                max-width: 90%;
+                padding: 1.5em;
+            }
+
+            h1 {
+                font-size: 1.8em;
+            }
+
+            p {
+                font-size: 1em;
             }
         }
 
@@ -176,7 +191,6 @@
 </head>
 <body>
     <div class="container">
-        <img src="logo.png" alt="Logo strony" style="max-width: 100px; margin-bottom: 1em;">
         <h1>Strona w budowie</h1>
         <p>Pracujemy nad czymś niesamowitym. Zapraszamy wkrótce!</p>
         <div class="loader"></div>
