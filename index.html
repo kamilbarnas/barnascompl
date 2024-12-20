@@ -1,11 +1,10 @@
-
 <!DOCTYPE html>
 <html lang="pl">
 <head>
     <meta name="google-site-verification" content="KSlESp9i557tIbQPf9hPZZQYeFRVKh1gkkR44gBhJmY" />
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Strona w budowie, wracaj wkrótce, aby zobaczyć nasze nowe funkcje!">
+    <meta name="description" content="Strona w budowie, wracaj wkrótce, aby zobaczyæ nasze nowe funkcje!">
     <meta name="keywords" content="strona w budowie, nowa strona, projekt w toku">
     <meta name="author" content="Kamil Barnas">
     <link rel="icon" href="favicon.ico" type="image/x-icon">
@@ -201,7 +200,7 @@
 <body>
     <div class="container">
         <h1>Strona w budowie</h1>
-        <p>Pracujemy nad czymś niesamowitym. Zapraszamy wkrótce!</p>
+        <p>Pracujemy nad czymœ niesamowitym. Zapraszamy wkrótce!</p>
         <div class="loader"></div>
         <div id="countdown"></div>
         <div class="language-switch">
@@ -210,14 +209,29 @@
             <button onclick="changeLanguage('de')">Deutsch</button>
         </div>
         <div class="form-section">
-            <h2 id="formTitle">Wyślij wiadomość</h2>
+            <h2 id="formTitle">Wyœlij wiadomoœæ</h2>
             <form action="https://formspree.io/f/manyrnby" method="POST">
-                <label for="message" id="labelMessage">Wiadomość:</label>
-                <textarea id="message" name="message" rows="4" placeholder="Napisz swoją wiadomość..." required></textarea>
-                <button type="submit" id="sendButton">Wyślij</button>
+                <label for="message" id="labelMessage">Wiadomoœæ:</label>
+                <textarea id="message" name="message" rows="4" placeholder="Napisz swoj¹ wiadomoœæ..." required></textarea>
+                <button type="submit" id="sendButton">Wyœlij</button>
             </form>
         </div>
     </div>
+
+    <!--Start of Tawk.to Script-->
+    <script type="text/javascript">
+    var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+    (function(){
+    var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+    s1.async=true;
+    s1.src='https://embed.tawk.to/6765e127af5bfec1dbdf32f0/1ifivf0pk';
+    s1.charset='UTF-8';
+    s1.setAttribute('crossorigin','*');
+    s0.parentNode.insertBefore(s1,s0);
+    })();
+    </script>
+    <!--End of Tawk.to Script-->
+
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-XXXXXXXXX-X"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
@@ -253,11 +267,11 @@
         const translations = {
             pl: {
                 title: "Strona w budowie",
-                message: "Pracujemy nad czymś niesamowitym. Zapraszamy wkrótce!",
-                formTitle: "Wyślij wiadomość",
-                labelMessage: "Wiadomość:",
-                placeholder: "Napisz swoją wiadomość...",
-                sendButton: "Wyślij",
+                message: "Pracujemy nad czymœ niesamowitym. Zapraszamy wkrótce!",
+                formTitle: "Wyœlij wiadomoœæ",
+                labelMessage: "Wiadomoœæ:",
+                placeholder: "Napisz swoj¹ wiadomoœæ...",
+                sendButton: "Wyœlij",
                 countdown: "Za {days} dni, {hours} godzin, {minutes} minut, {seconds} sekund"
             },
             en: {
