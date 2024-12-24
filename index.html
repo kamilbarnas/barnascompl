@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="pl">
 <head>
@@ -131,13 +130,6 @@
             background: #666666;
         }
 
-        #countdown {
-            margin: 1.5em 0;
-            font-size: 1.2em;
-            font-weight: 400;
-            color: #d0d0d0;
-        }
-
         @keyframes spin {
             100% {
                 transform: rotate(360deg);
@@ -203,7 +195,6 @@
         <h1>Strona w budowie</h1>
         <p>Pracujemy nad czymś niesamowitym. Zapraszamy wkrótce!</p>
         <div class="loader"></div>
-        <div id="countdown"></div>
         <div class="language-switch">
             <button onclick="changeLanguage('pl')">Polski</button>
             <button onclick="changeLanguage('en')">English</button>
@@ -225,31 +216,6 @@
         gtag('js', new Date());
         gtag('config', 'UA-XXXXXXXXX-X');
 
-        const targetDate = new Date("2025-01-01T00:00:00").getTime();
-        const countdown = document.getElementById("countdown");
-
-        function updateCountdown() {
-            const now = new Date().getTime();
-            const timeLeft = targetDate - now;
-            if (timeLeft < 0) {
-                countdown.innerHTML = "Strona jest gotowa!";
-                return;
-            }
-
-            const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
-            const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
-            const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
-
-            countdown.innerHTML = translations[currentLang].countdown
-                .replace("{days}", days)
-                .replace("{hours}", hours)
-                .replace("{minutes}", minutes)
-                .replace("{seconds}", seconds);
-        }
-
-        setInterval(updateCountdown, 1000);
-
         const translations = {
             pl: {
                 title: "Strona w budowie",
@@ -258,7 +224,6 @@
                 labelMessage: "Wiadomość:",
                 placeholder: "Napisz swoją wiadomość...",
                 sendButton: "Wyślij",
-                countdown: "Za {days} dni, {hours} godzin, {minutes} minut, {seconds} sekund"
             },
             en: {
                 title: "Website Under Construction",
@@ -267,7 +232,6 @@
                 labelMessage: "Message:",
                 placeholder: "Write your message...",
                 sendButton: "Send",
-                countdown: "In {days} days, {hours} hours, {minutes} minutes, {seconds} seconds"
             },
             de: {
                 title: "Webseite im Aufbau",
@@ -276,7 +240,6 @@
                 labelMessage: "Nachricht:",
                 placeholder: "Schreiben Sie Ihre Nachricht...",
                 sendButton: "Senden",
-                countdown: "In {days} Tagen, {hours} Stunden, {minutes} Minuten, {seconds} Sekunden"
             }
         };
 
@@ -291,7 +254,6 @@
             document.getElementById('labelMessage').innerText = translation.labelMessage;
             document.getElementById('message').placeholder = translation.placeholder;
             document.getElementById('sendButton').innerText = translation.sendButton;
-            updateCountdown();
         }
 
         changeLanguage('pl');
