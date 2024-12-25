@@ -1,11 +1,10 @@
-
 <!DOCTYPE html>
 <html lang="pl">
 <head>
     <meta name="google-site-verification" content="KSlESp9i557tIbQPf9hPZZQYeFRVKh1gkkR44gBhJmY" />
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Strona w budowie, wracaj wkrótce, aby zobaczyć nasze nowe funkcje!">
+    <meta name="description" content="Strona w budowie, wracaj wkrótce, aby zobaczyæ nasze nowe funkcje!">
     <meta name="keywords" content="strona w budowie, nowa strona, projekt w toku">
     <meta name="author" content="Kamil Barnas">
     <link rel="icon" href="favicon.ico" type="image/x-icon">
@@ -15,8 +14,8 @@
         body {
             margin: 0;
             font-family: 'Inter', sans-serif;
-            background: #2c2c2c;
-            color: #e0e0e0;
+            background: linear-gradient(135deg, #4facfe, #8e44ad);
+            color: #ffffff;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -27,7 +26,7 @@
         }
 
         .container {
-            background: #3a3a3a;
+            background: rgba(0, 0, 0, 0.6);
             padding: 2em;
             border-radius: 12px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
@@ -44,13 +43,13 @@
             font-size: 2em;
             font-weight: 600;
             margin-bottom: 0.5em;
-            color: #f0f0f0;
+            color: #ffffff;
         }
 
         p {
             font-size: 1.2em;
             font-weight: 400;
-            color: #d0d0d0;
+            color: #e0e0e0;
             margin-bottom: 1.5em;
         }
 
@@ -62,8 +61,8 @@
         }
 
         .language-switch button {
-            background: #4d4d4d;
-            color: #f0f0f0;
+            background: rgba(255, 255, 255, 0.2);
+            color: #ffffff;
             border: none;
             border-radius: 8px;
             padding: 0.5em 1em;
@@ -73,7 +72,7 @@
         }
 
         .language-switch button:hover {
-            background: #5e5e5e;
+            background: rgba(255, 255, 255, 0.4);
         }
 
         .loader {
@@ -81,7 +80,7 @@
             width: 40px;
             height: 40px;
             border: 4px solid rgba(255, 255, 255, 0.2);
-            border-top: 4px solid #f0f0f0;
+            border-top: 4px solid #ffffff;
             border-radius: 50%;
             animation: spin 1s linear infinite;
         }
@@ -89,7 +88,7 @@
         .form-section {
             margin-top: 2em;
             text-align: left;
-            background: #3d3d3d;
+            background: rgba(0, 0, 0, 0.8);
             padding: 1.5em;
             border-radius: 8px;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
@@ -103,22 +102,22 @@
 
         .form-section label {
             font-size: 1em;
-            color: #d0d0d0;
+            color: #e0e0e0;
         }
 
         .form-section textarea {
             padding: 0.8em;
             border: none;
             border-radius: 8px;
-            background: #2e2e2e;
-            color: #f0f0f0;
+            background: rgba(255, 255, 255, 0.1);
+            color: #ffffff;
             font-size: 1em;
             resize: none;
         }
 
         .form-section button {
-            background: #4d4d4d;
-            color: #f0f0f0;
+            background: rgba(255, 255, 255, 0.2);
+            color: #ffffff;
             border: none;
             border-radius: 8px;
             padding: 0.8em;
@@ -128,14 +127,14 @@
         }
 
         .form-section button:hover {
-            background: #666666;
+            background: rgba(255, 255, 255, 0.4);
         }
 
         #countdown {
             margin: 1.5em 0;
             font-size: 1.2em;
             font-weight: 400;
-            color: #d0d0d0;
+            color: #e0e0e0;
         }
 
         @keyframes spin {
@@ -218,83 +217,5 @@
             </form>
         </div>
     </div>
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-XXXXXXXXX-X"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag() { dataLayer.push(arguments); }
-        gtag('js', new Date());
-        gtag('config', 'UA-XXXXXXXXX-X');
-
-        const targetDate = new Date("2025-01-01T00:00:00").getTime();
-        const countdown = document.getElementById("countdown");
-
-        function updateCountdown() {
-            const now = new Date().getTime();
-            const timeLeft = targetDate - now;
-            if (timeLeft < 0) {
-                countdown.innerHTML = "Strona jest gotowa!";
-                return;
-            }
-
-            const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
-            const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
-            const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
-
-            countdown.innerHTML = translations[currentLang].countdown
-                .replace("{days}", days)
-                .replace("{hours}", hours)
-                .replace("{minutes}", minutes)
-                .replace("{seconds}", seconds);
-        }
-
-        setInterval(updateCountdown, 1000);
-
-        const translations = {
-            pl: {
-                title: "Strona w budowie",
-                message: "Pracujemy nad czymś niesamowitym. Zapraszamy wkrótce!",
-                formTitle: "Wyślij wiadomość",
-                labelMessage: "Wiadomość:",
-                placeholder: "Napisz swoją wiadomość...",
-                sendButton: "Wyślij",
-                countdown: "Za {days} dni, {hours} godzin, {minutes} minut, {seconds} sekund"
-            },
-            en: {
-                title: "Website Under Construction",
-                message: "We are working on something amazing. Stay tuned!",
-                formTitle: "Send a Message",
-                labelMessage: "Message:",
-                placeholder: "Write your message...",
-                sendButton: "Send",
-                countdown: "In {days} days, {hours} hours, {minutes} minutes, {seconds} seconds"
-            },
-            de: {
-                title: "Webseite im Aufbau",
-                message: "Wir arbeiten an etwas Unglaublichem. Besuchen Sie uns bald wieder!",
-                formTitle: "Nachricht senden",
-                labelMessage: "Nachricht:",
-                placeholder: "Schreiben Sie Ihre Nachricht...",
-                sendButton: "Senden",
-                countdown: "In {days} Tagen, {hours} Stunden, {minutes} Minuten, {seconds} Sekunden"
-            }
-        };
-
-        let currentLang = 'pl';
-        function changeLanguage(lang) {
-            currentLang = lang;
-            const translation = translations[lang];
-
-            document.querySelector('h1').innerText = translation.title;
-            document.querySelector('p').innerText = translation.message;
-            document.getElementById('formTitle').innerText = translation.formTitle;
-            document.getElementById('labelMessage').innerText = translation.labelMessage;
-            document.getElementById('message').placeholder = translation.placeholder;
-            document.getElementById('sendButton').innerText = translation.sendButton;
-            updateCountdown();
-        }
-
-        changeLanguage('pl');
-    </script>
 </body>
 </html>
