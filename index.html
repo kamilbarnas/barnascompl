@@ -5,7 +5,7 @@
     <meta name="google-site-verification" content="KSlESp9i557tIbQPf9hPZZQYeFRVKh1gkkR44gBhJmY" />
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Strona w budowie, wracaj wkrótce, aby zobaczyæ nasze nowe funkcje!">
+    <meta name="description" content="Strona w budowie, wracaj wkrÃ³tce, aby zobaczyÄ‡ nasze nowe funkcje!">
     <meta name="keywords" content="strona w budowie, nowa strona, projekt w toku">
     <meta name="author" content="Kamil Barnas">
     <link rel="icon" href="favicon.ico" type="image/x-icon">
@@ -131,6 +131,13 @@
             background: #666666;
         }
 
+        #countdown {
+            margin: 1.5em 0;
+            font-size: 1.2em;
+            font-weight: 400;
+            color: #d0d0d0;
+        }
+
         @keyframes spin {
             100% {
                 transform: rotate(360deg);
@@ -194,19 +201,20 @@
 <body>
     <div class="container">
         <h1>Strona w budowie</h1>
-        <p>Pracujemy nad czymœ niesamowitym. Zapraszamy wkrótce!</p>
+        <p>Pracujemy nad czymÅ› niesamowitym. Zapraszamy wkrÃ³tce!</p>
         <div class="loader"></div>
+        <div id="countdown"></div>
         <div class="language-switch">
             <button onclick="changeLanguage('pl')">Polski</button>
             <button onclick="changeLanguage('en')">English</button>
             <button onclick="changeLanguage('de')">Deutsch</button>
         </div>
         <div class="form-section">
-            <h2 id="formTitle">Wyœlij wiadomoœæ</h2>
+            <h2 id="formTitle">WyÅ›lij wiadomoÅ›Ä‡</h2>
             <form action="https://formspree.io/f/manyrnby" method="POST">
-                <label for="message" id="labelMessage">Wiadomoœæ:</label>
-                <textarea id="message" name="message" rows="4" placeholder="Napisz swoj¹ wiadomoœæ..." required></textarea>
-                <button type="submit" id="sendButton">Wyœlij</button>
+                <label for="message" id="labelMessage">WiadomoÅ›Ä‡:</label>
+                <textarea id="message" name="message" rows="4" placeholder="Napisz swojÄ… wiadomoÅ›Ä‡..." required></textarea>
+                <button type="submit" id="sendButton">WyÅ›lij</button>
             </form>
         </div>
     </div>
@@ -217,14 +225,40 @@
         gtag('js', new Date());
         gtag('config', 'UA-XXXXXXXXX-X');
 
+        const targetDate = new Date("2025-01-01T00:00:00").getTime();
+        const countdown = document.getElementById("countdown");
+
+        function updateCountdown() {
+            const now = new Date().getTime();
+            const timeLeft = targetDate - now;
+            if (timeLeft < 0) {
+                countdown.innerHTML = "Strona jest gotowa!";
+                return;
+            }
+
+            const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+
+            countdown.innerHTML = translations[currentLang].countdown
+                .replace("{days}", days)
+                .replace("{hours}", hours)
+                .replace("{minutes}", minutes)
+                .replace("{seconds}", seconds);
+        }
+
+        setInterval(updateCountdown, 1000);
+
         const translations = {
             pl: {
                 title: "Strona w budowie",
-                message: "Pracujemy nad czymœ niesamowitym. Zapraszamy wkrótce!",
-                formTitle: "Wyœlij wiadomoœæ",
-                labelMessage: "Wiadomoœæ:",
-                placeholder: "Napisz swoj¹ wiadomoœæ...",
-                sendButton: "Wyœlij",
+                message: "Pracujemy nad czymÅ› niesamowitym. Zapraszamy wkrÃ³tce!",
+                formTitle: "WyÅ›lij wiadomoÅ›Ä‡",
+                labelMessage: "WiadomoÅ›Ä‡:",
+                placeholder: "Napisz swojÄ… wiadomoÅ›Ä‡...",
+                sendButton: "WyÅ›lij",
+                countdown: "Za {days} dni, {hours} godzin, {minutes} minut, {seconds} sekund"
             },
             en: {
                 title: "Website Under Construction",
@@ -233,6 +267,7 @@
                 labelMessage: "Message:",
                 placeholder: "Write your message...",
                 sendButton: "Send",
+                countdown: "In {days} days, {hours} hours, {minutes} minutes, {seconds} seconds"
             },
             de: {
                 title: "Webseite im Aufbau",
@@ -241,6 +276,7 @@
                 labelMessage: "Nachricht:",
                 placeholder: "Schreiben Sie Ihre Nachricht...",
                 sendButton: "Senden",
+                countdown: "In {days} Tagen, {hours} Stunden, {minutes} Minuten, {seconds} Sekunden"
             }
         };
 
@@ -255,6 +291,7 @@
             document.getElementById('labelMessage').innerText = translation.labelMessage;
             document.getElementById('message').placeholder = translation.placeholder;
             document.getElementById('sendButton').innerText = translation.sendButton;
+            updateCountdown();
         }
 
         changeLanguage('pl');
