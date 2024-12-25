@@ -199,8 +199,8 @@
 </head>
 <body>
     <div class="container">
-        <h1>Strona w budowie</h1>
-        <p>Pracujemy nad czymś niesamowitym. Zapraszamy wkrótce!</p>
+        <h1 id="title">Strona w budowie</h1>
+        <p id="description">Pracujemy nad czymś niesamowitym. Zapraszamy wkrótce!</p>
         <div class="loader"></div>
         <div id="countdown"></div>
         <div class="language-switch">
@@ -217,5 +217,46 @@
             </form>
         </div>
     </div>
+    <script>
+        const translations = {
+            pl: {
+                title: "Strona w budowie",
+                description: "Pracujemy nad czymś niesamowitym. Zapraszamy wkrótce!",
+                formTitle: "Wyślij wiadomość",
+                labelMessage: "Wiadomość:",
+                placeholder: "Napisz swoją wiadomość...",
+                sendButton: "Wyślij"
+            },
+            en: {
+                title: "Website Under Construction",
+                description: "We are working on something amazing. Stay tuned!",
+                formTitle: "Send a Message",
+                labelMessage: "Message:",
+                placeholder: "Write your message...",
+                sendButton: "Send"
+            },
+            de: {
+                title: "Webseite im Aufbau",
+                description: "Wir arbeiten an etwas Unglaublichem. Besuchen Sie uns bald wieder!",
+                formTitle: "Nachricht senden",
+                labelMessage: "Nachricht:",
+                placeholder: "Schreiben Sie Ihre Nachricht...",
+                sendButton: "Senden"
+            }
+        };
+
+        function changeLanguage(lang) {
+            const translation = translations[lang];
+            document.getElementById("title").innerText = translation.title;
+            document.getElementById("description").innerText = translation.description;
+            document.getElementById("formTitle").innerText = translation.formTitle;
+            document.getElementById("labelMessage").innerText = translation.labelMessage;
+            document.getElementById("message").placeholder = translation.placeholder;
+            document.getElementById("sendButton").innerText = translation.sendButton;
+        }
+
+        // Set default language to Polish
+        changeLanguage('pl');
+    </script>
 </body>
 </html>
