@@ -1,21 +1,21 @@
 <!DOCTYPE html>
-<html lang="pl">
-<head>
-    <meta name="google-site-verification" content="KSlESp9i557tIbQPf9hPZZQYeFRVKh1gkkR44gBhJmY" />
-    <meta charset="UTF-8">
+<!-- saved from url=(0014)about:internet -->
+<html lang="pl"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="google-site-verification" content="KSlESp9i557tIbQPf9hPZZQYeFRVKh1gkkR44gBhJmY">
+    
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Strona w budowie, wracaj wkrótce, aby zobaczyæ nasze nowe funkcje!">
     <meta name="keywords" content="strona w budowie, nowa strona, projekt w toku">
     <meta name="author" content="Kamil Barnas">
-    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link rel="icon" href="https://barnas.com.pl/favicon.ico" type="image/x-icon">
     <title>Strona w budowie</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+    <link href="./Strona w budowie_files/css2" rel="stylesheet">
     <style>
         body {
             margin: 0;
             font-family: 'Inter', sans-serif;
             background: linear-gradient(135deg, #4facfe, #8e44ad);
-            color: #ffffff;
+            color: #333333;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -43,13 +43,13 @@
             font-size: 2em;
             font-weight: 600;
             margin-bottom: 0.5em;
-            color: #ffffff;
+            color: #333333;
         }
 
         p {
             font-size: 1.2em;
             font-weight: 400;
-            color: #ffffff;
+            color: #333333;
             margin-bottom: 1.5em;
         }
 
@@ -62,7 +62,7 @@
 
         .language-switch button {
             background: rgba(255, 255, 255, 0.2);
-            color: #ffffff;
+            color: #333333;
             border: none;
             border-radius: 8px;
             padding: 0.5em 1em;
@@ -80,7 +80,7 @@
             width: 40px;
             height: 40px;
             border: 4px solid rgba(255, 255, 255, 0.2);
-            border-top: 4px solid #ffffff;
+            border-top: 4px solid #333333;
             border-radius: 50%;
             animation: spin 1s linear infinite;
         }
@@ -102,7 +102,7 @@
 
         .form-section label {
             font-size: 1em;
-            color: #ffffff;
+            color: #333333;
         }
 
         .form-section textarea {
@@ -110,14 +110,14 @@
             border: none;
             border-radius: 8px;
             background: rgba(255, 255, 255, 0.2);
-            color: #ffffff;
+            color: #333333;
             font-size: 1em;
             resize: none;
         }
 
         .form-section button {
             background: rgba(255, 255, 255, 0.2);
-            color: #ffffff;
+            color: #333333;
             border: none;
             border-radius: 8px;
             padding: 0.8em;
@@ -134,7 +134,7 @@
             margin: 1.5em 0;
             font-size: 1.2em;
             font-weight: 400;
-            color: #ffffff;
+            color: #333333;
         }
 
         @keyframes spin {
@@ -204,15 +204,15 @@
         <div class="loader"></div>
         <div id="countdown"></div>
         <div class="language-switch">
-            <button onclick="changeLanguage('pl')">Polski</button>
-            <button onclick="changeLanguage('en')">English</button>
-            <button onclick="changeLanguage('de')">Deutsch</button>
+            <button onclick="changeLanguage(&#39;pl&#39;)">Polski</button>
+            <button onclick="changeLanguage(&#39;en&#39;)">English</button>
+            <button onclick="changeLanguage(&#39;de&#39;)">Deutsch</button>
         </div>
         <div class="form-section">
             <h2 id="formTitle">Wyślij wiadomość</h2>
             <form action="https://formspree.io/f/manyrnby" method="POST">
                 <label for="message" id="labelMessage">Wiadomość:</label>
-                <textarea id="message" name="message" rows="4" placeholder="Napisz swoją wiadomość..." required></textarea>
+                <textarea id="message" name="message" rows="4" placeholder="Napisz swoją wiadomość..." required=""></textarea>
                 <button type="submit" id="sendButton">Wyślij</button>
             </form>
         </div>
@@ -258,5 +258,6 @@
         // Set default language to Polish
         changeLanguage('pl');
     </script>
-</body>
-</html>
+
+
+</body></html>
