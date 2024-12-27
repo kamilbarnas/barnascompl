@@ -138,6 +138,12 @@
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
         }
 
+        .form-section h2 {
+            color: #ffffff;
+            font-size: 1.5em;
+            margin-bottom: 1em;
+        }
+
         .form-section form {
             display: flex;
             flex-direction: column;
@@ -238,7 +244,7 @@
         </div>
         <div class="form-section">
             <h2 id="formTitle">Wyślij wiadomość</h2>
-            <form action="https://formspree.io/f/manyrnby" method="POST" onsubmit="showSpinner(event)">
+            <form action="https://formspree.io/f/manyrnby" method="POST">
                 <label for="message" id="labelMessage">Wiadomość:</label>
                 <textarea id="message" name="message" rows="4" placeholder="Napisz swoją wiadomość..." required></textarea>
                 <button type="submit" id="sendButton">Wyślij
@@ -283,14 +289,6 @@
             document.getElementById("labelMessage").innerText = translation.labelMessage;
             document.getElementById("message").placeholder = translation.placeholder;
             document.getElementById("sendButton").innerText = translation.sendButton;
-        }
-
-        function showSpinner(event) {
-            event.preventDefault();
-            document.getElementById("spinner").style.display = "block";
-            setTimeout(() => {
-                event.target.submit();
-            }, 1000);
         }
 
         changeLanguage('pl');
