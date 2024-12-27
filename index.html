@@ -1,9 +1,7 @@
-
 <!DOCTYPE html>
 <html lang="pl">
 <head>
-    <meta name="google-site-verification" content="KSlESp9i557tIbQPf9hPZZQYeFRVKh1gkkR44gBhJmY" />
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Strona w budowie, wracaj wkrótce, aby zobaczyć nasze nowe funkcje!">
     <meta name="keywords" content="Kamil Barnas, projektowanie stron, budowa stron, responsywne strony, usługi web design, nowoczesne strony www">
@@ -21,10 +19,34 @@
             min-height: 100vh;
             text-align: center;
             padding: 0;
+            overflow: hidden;
+        }
+
+        .background-animation {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: linear-gradient(135deg, #4facfe, #8e44ad);
+            animation: gradient-shift 5s ease infinite;
+        }
+
+        @keyframes gradient-shift {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
         }
 
         .container {
-            background: linear-gradient(135deg, #4facfe, #8e44ad);
+            background: rgba(255, 255, 255, 0.1);
             padding: 2em;
             border-radius: 12px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
@@ -32,10 +54,22 @@
             width: 100%;
             transition: transform 0.3s ease;
             box-sizing: border-box;
+            animation: fade-in 2s ease;
+        }
+
+        @keyframes fade-in {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         .container:hover {
-            transform: scale(1.02);
+            transform: scale(1.05);
         }
 
         h1 {
@@ -43,6 +77,16 @@
             font-weight: 600;
             margin-bottom: 0.5em;
             color: #ffffff;
+            animation: pulse 1.5s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+            }
+            50% {
+                text-shadow: 0 0 20px rgba(255, 255, 255, 1);
+            }
         }
 
         p {
@@ -67,11 +111,22 @@
             padding: 0.5em 1em;
             cursor: pointer;
             font-size: 1em;
-            transition: background 0.3s;
+            transition: background 0.3s, transform 0.3s;
+            animation: bounce 2s infinite;
         }
 
         .language-switch button:hover {
             background: rgba(255, 255, 255, 0.4);
+            transform: scale(1.1);
+        }
+
+        @keyframes bounce {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
         }
 
         .form-section {
@@ -81,20 +136,21 @@
             padding: 1.5em;
             border-radius: 8px;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+            animation: slide-in 1.5s ease;
         }
 
-        .form-section form {
-            display: flex;
-            flex-direction: column;
-            gap: 1em;
+        @keyframes slide-in {
+            from {
+                transform: translateX(-100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
         }
 
-        .form-section label {
-            font-size: 1em;
-            color: #ffffff;
-        }
-
-        .form-section textarea {
+        textarea {
             padding: 0.8em;
             border: none;
             border-radius: 8px;
@@ -102,9 +158,14 @@
             color: #ffffff;
             font-size: 1em;
             resize: none;
+            transition: background 0.3s;
         }
 
-        .form-section button {
+        textarea:focus {
+            background: rgba(255, 255, 255, 0.4);
+        }
+
+        button {
             background: rgba(255, 255, 255, 0.2);
             color: #ffffff;
             border: none;
@@ -112,36 +173,13 @@
             padding: 0.8em;
             cursor: pointer;
             font-size: 1em;
-            transition: background 0.3s, color 0.3s;
+            transition: background 0.3s, color 0.3s, transform 0.3s;
         }
 
-        .form-section h2 {
-            color: #ffffff;
-        }
-
-        .form-section button:hover {
+        button:hover {
             background: rgba(255, 255, 255, 0.4);
             color: #333333;
-        }
-
-        @keyframes spin {
-            100% {
-                transform: rotate(360deg);
-            }
-        }
-
-        @media (max-width: 1366px) {
-            .container {
-                max-width: 80%;
-            }
-
-            h1 {
-                font-size: 2.2em;
-            }
-
-            p {
-                font-size: 1.1em;
-            }
+            transform: scale(1.1);
         }
 
         @media (max-width: 768px) {
@@ -167,6 +205,7 @@
     </style>
 </head>
 <body>
+    <div class="background-animation"></div>
     <div class="container">
         <h1 id="title">Strona w budowie</h1>
         <p id="description">Pracujemy nad czymś wyjątkowym! 🚀 Wypełnij formularz już teraz i daj nam znać, jak możemy Ci pomóc. 💬 Czekamy na Twoją wiadomość!</p>
