@@ -2,7 +2,6 @@
 <html lang="pl">
 <head>
     <meta charset="UTF-8">
-    <meta name="google-site-verification" content="KSlESp9i557tIbQPf9hPZZQYeFRVKh1gkkR44gBhJmY">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Strona w budowie, wracaj wkrótce, aby zobaczyć nasze nowe funkcje!">
     <meta name="keywords" content="Kamil Barnas, projektowanie stron, budowa stron, responsywne strony, usługi web design, nowoczesne strony www">
@@ -18,8 +17,6 @@
             justify-content: center;
             align-items: center;
             min-height: 100vh;
-            text-align: center;
-            padding: 0;
             overflow: hidden;
         }
 
@@ -48,127 +45,72 @@
 
         .container {
             background: rgba(255, 255, 255, 0.1);
-            padding: 2em;
+            padding: 1em;
             border-radius: 12px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-            max-width: 70%;
+            max-width: 300px;
             width: 100%;
-            transition: transform 0.3s ease;
+            transform: translateX(-100%);
+            animation: slide-in 1s ease forwards;
             box-sizing: border-box;
-            animation: fade-in 2s ease;
         }
 
-        @keyframes fade-in {
+        @keyframes slide-in {
             from {
-                opacity: 0;
-                transform: translateY(-20px);
+                transform: translateX(-100%);
             }
             to {
-                opacity: 1;
-                transform: translateY(0);
+                transform: translateX(0);
             }
-        }
-
-        .container:hover {
-            transform: scale(1.05);
         }
 
         h1 {
-            font-size: 2.5em;
+            font-size: 1.8em;
             font-weight: 600;
             margin-bottom: 0.5em;
             color: #ffffff;
-            animation: pulse 1.5s infinite;
-        }
-
-        @keyframes pulse {
-            0%, 100% {
-                text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
-            }
-            50% {
-                text-shadow: 0 0 20px rgba(255, 255, 255, 1);
-            }
         }
 
         p {
-            font-size: 1.2em;
+            font-size: 1em;
             font-weight: 400;
             color: #ffffff;
             margin-bottom: 1.5em;
         }
 
-        .language-switch {
-            display: flex;
-            justify-content: center;
-            gap: 1em;
-            flex-wrap: wrap;
-        }
-
-        .language-switch button {
-            background: rgba(255, 255, 255, 0.2);
-            color: #ffffff;
-            border: none;
-            border-radius: 8px;
-            padding: 0.5em 1em;
-            cursor: pointer;
-            font-size: 1em;
-            transition: background 0.3s, transform 0.3s;
-            animation: bounce 2s infinite;
-        }
-
-        .language-switch button:hover {
-            background: rgba(255, 255, 255, 0.4);
-            transform: scale(1.1);
-        }
-
-        @keyframes bounce {
-            0%, 100% {
-                transform: translateY(0);
-            }
-            50% {
-                transform: translateY(-10px);
-            }
-        }
-
         .form-section {
-            margin-top: 2em;
             text-align: left;
             background: rgba(255, 255, 255, 0.1);
-            padding: 1.5em;
+            padding: 1em;
             border-radius: 8px;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
         }
 
         .form-section h2 {
             color: #ffffff;
-            font-size: 1.5em;
-            margin-bottom: 1em;
+            font-size: 1.2em;
+            margin-bottom: 0.5em;
         }
 
         .form-section form {
             display: flex;
             flex-direction: column;
-            gap: 1em;
+            gap: 0.5em;
         }
 
         .form-section label {
-            font-size: 1em;
+            font-size: 0.9em;
             color: #ffffff;
         }
 
         .form-section textarea {
-            padding: 0.8em;
+            padding: 0.5em;
             border: none;
             border-radius: 8px;
             background: rgba(255, 255, 255, 0.2);
             color: #202124;
-            font-size: 1em;
+            font-size: 0.9em;
             resize: none;
-            transition: background 0.3s;
-        }
-
-        .form-section textarea:focus {
-            background: rgba(255, 255, 255, 0.4);
         }
 
         .form-section button {
@@ -176,60 +118,15 @@
             color: #ffffff;
             border: none;
             border-radius: 8px;
-            padding: 0.8em;
+            padding: 0.5em;
             cursor: pointer;
-            font-size: 1em;
+            font-size: 0.9em;
             transition: background 0.3s, color 0.3s;
-            position: relative;
         }
 
         .form-section button:hover {
             background: rgba(255, 255, 255, 0.4);
             color: #333333;
-        }
-
-        .spinner {
-            width: 20px;
-            height: 20px;
-            border: 3px solid rgba(255, 255, 255, 0.3);
-            border-top: 3px solid #ffffff;
-            border-radius: 50%;
-            animation: spin 1s linear infinite;
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            display: none;
-        }
-
-        @keyframes spin {
-            0% {
-                transform: translate(-50%, -50%) rotate(0deg);
-            }
-            100% {
-                transform: translate(-50%, -50%) rotate(360deg);
-            }
-        }
-
-        @media (max-width: 768px) {
-            body {
-                padding: 1em;
-            }
-
-            .container {
-                max-width: 90%;
-                padding: 1em;
-            }
-
-            h1 {
-                font-size: 1.8em;
-                margin-bottom: 0.5em;
-            }
-
-            p {
-                font-size: 1em;
-                margin-bottom: 1em;
-            }
         }
     </style>
 </head>
@@ -237,62 +134,15 @@
     <div class="background-animation"></div>
     <div class="container">
         <h1 id="title">Strona w budowie</h1>
-        <p id="description">Pracujemy nad czymś wyjątkowym! 🚀 Wypełnij formularz już teraz i daj nam znać, jak możemy Ci pomóc. 💬 Czekamy na Twoją wiadomość!</p>
-        <div class="language-switch">
-            <button onclick="changeLanguage('pl')">Polski</button>
-            <button onclick="changeLanguage('en')">English</button>
-            <button onclick="changeLanguage('de')">Deutsch</button>
-        </div>
+        <p id="description">Pracujemy nad czymś wyjątkowym! Wypełnij formularz już teraz i daj nam znać, jak możemy Ci pomóc.</p>
         <div class="form-section">
             <h2 id="formTitle">Wyślij wiadomość</h2>
             <form action="https://formspree.io/f/manyrnby" method="POST">
                 <label for="message" id="labelMessage">Wiadomość:</label>
                 <textarea id="message" name="message" rows="4" placeholder="Napisz swoją wiadomość..." required></textarea>
-                <button type="submit" id="sendButton">Wyślij
-                    <div class="spinner" id="spinner"></div>
-                </button>
+                <button type="submit" id="sendButton">Wyślij</button>
             </form>
         </div>
     </div>
-    <script>
-        const translations = {
-            pl: {
-                title: "Strona w budowie",
-                description: "Pracujemy nad czymś wyjątkowym! 🚀 Wypełnij formularz już teraz i daj nam znać, jak możemy Ci pomóc. 💬 Czekamy na Twoją wiadomość!",
-                formTitle: "Wyślij wiadomość",
-                labelMessage: "Wiadomość:",
-                placeholder: "Napisz swoją wiadomość...",
-                sendButton: "Wyślij"
-            },
-            en: {
-                title: "Website Under Construction",
-                description: "We are working on something exceptional! 🚀 Fill out the form now and let us know how we can help you. 💬 We’re looking forward to your message!",
-                formTitle: "Send a Message",
-                labelMessage: "Message:",
-                placeholder: "Write your message...",
-                sendButton: "Send"
-            },
-            de: {
-                title: "Webseite im Aufbau",
-                description: "Wir arbeiten an etwas Außergewöhnlichem! 🚀 Füllen Sie jetzt das Formular aus und lassen Sie uns wissen, wie wir Ihnen helfen können. 💬 Wir freuen uns auf Ihre Nachricht!",
-                formTitle: "Nachricht senden",
-                labelMessage: "Nachricht:",
-                placeholder: "Schreiben Sie Ihre Nachricht...",
-                sendButton: "Senden"
-            }
-        };
-
-        function changeLanguage(lang) {
-            const translation = translations[lang];
-            document.getElementById("title").innerText = translation.title;
-            document.getElementById("description").innerText = translation.description;
-            document.getElementById("formTitle").innerText = translation.formTitle;
-            document.getElementById("labelMessage").innerText = translation.labelMessage;
-            document.getElementById("message").placeholder = translation.placeholder;
-            document.getElementById("sendButton").innerText = translation.sendButton;
-        }
-
-        changeLanguage('pl');
-    </script>
 </body>
 </html>
