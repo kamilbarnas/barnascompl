@@ -1,7 +1,7 @@
 <!DOCTYPE html>
-<html lang="pl"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    
-    <meta name="google-site-verification" content="KSlESp9i557tIbQPf9hPZZQYeFRVKh1gkkR44gBhJmY">
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Strona w budowie, wracaj wkrótce, aby zobaczyć nasze nowe funkcje!">
     <meta name="keywords" content="Kamil Barnas, projektowanie stron, budowa stron, responsywne strony, usługi web design, nowoczesne strony www">
@@ -10,287 +10,69 @@
     <style>
         body {
             margin: 0;
-            font-family: 'Inter', sans-serif;
-            background: linear-gradient(135deg, #4facfe, #8e44ad);
-            color: #333333;
+            font-family: 'Arial', sans-serif;
+            background: url('https://as2.ftcdn.net/v2/jpg/01/75/92/69/1000_F_175926981_eV69cobFMHsmJCFAgglRugZkJgmkN3Ts.jpg') no-repeat center center fixed;
+            background-size: cover;
+            color: #ffffff;
             display: flex;
             justify-content: center;
             align-items: center;
             min-height: 100vh;
             text-align: center;
-            padding: 0;
-            overflow: hidden;
         }
 
-        .background-animation {
+        .overlay {
+            background: rgba(0, 0, 0, 0.5);
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
             z-index: -1;
-            background: linear-gradient(135deg, #4facfe, #8e44ad);
-            animation: gradient-shift 5s ease infinite;
-        }
-
-        @keyframes gradient-shift {
-            0% {
-                background-position: 0% 50%;
-            }
-            50% {
-                background-position: 100% 50%;
-            }
-            100% {
-                background-position: 0% 50%;
-            }
         }
 
         .container {
-            background: rgba(255, 255, 255, 0.1);
+            background: rgba(0, 0, 0, 0.7);
             padding: 2em;
             border-radius: 12px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-            max-width: 70%;
-            width: 100%;
-            transition: transform 0.3s ease;
-            box-sizing: border-box;
-            animation: fade-in 2s ease;
-        }
-
-        @keyframes fade-in {
-            from {
-                opacity: 0;
-                transform: translateY(-20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .container:hover {
-            transform: scale(1.05);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+            max-width: 600px;
+            width: 90%;
         }
 
         h1 {
             font-size: 2.5em;
-            font-weight: 600;
-            margin-bottom: 0.5em;
-            color: #ffffff;
-            animation: pulse 1.5s infinite;
-        }
-
-        @keyframes pulse {
-            0%, 100% {
-                text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
-            }
-            50% {
-                text-shadow: 0 0 20px rgba(255, 255, 255, 1);
-            }
+            font-weight: bold;
+            margin-bottom: 1em;
         }
 
         p {
             font-size: 1.2em;
-            font-weight: 400;
-            color: #ffffff;
             margin-bottom: 1.5em;
         }
 
-        .language-switch {
-            display: flex;
-            justify-content: center;
-            gap: 1em;
-            flex-wrap: wrap;
-        }
-
-        .language-switch button {
-            background: rgba(255, 255, 255, 0.2);
+        button {
+            background: #007bff;
             color: #ffffff;
             border: none;
             border-radius: 8px;
-            padding: 0.5em 1em;
+            padding: 0.8em 1.5em;
             cursor: pointer;
             font-size: 1em;
-            transition: background 0.3s, transform 0.3s;
-            animation: bounce 2s infinite;
-        }
-
-        .language-switch button:hover {
-            background: rgba(255, 255, 255, 0.4);
-            transform: scale(1.1);
-        }
-
-        @keyframes bounce {
-            0%, 100% {
-                transform: translateY(0);
-            }
-            50% {
-                transform: translateY(-10px);
-            }
-        }
-
-        .form-section {
-            margin-top: 2em;
-            text-align: left;
-            background: rgba(255, 255, 255, 0.1);
-            padding: 1.5em;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-        }
-
-        .form-section h2 {
-            color: #ffffff;
-            font-size: 1.5em;
-            margin-bottom: 1em;
-        }
-
-        .form-section form {
-            display: flex;
-            flex-direction: column;
-            gap: 1em;
-        }
-
-        .form-section label {
-            font-size: 1em;
-            color: #ffffff;
-        }
-
-        .form-section textarea {
-            padding: 0.8em;
-            border: none;
-            border-radius: 8px;
-            background: rgba(255, 255, 255, 0.2);
-            color: #202124;
-            font-size: 1em;
-            resize: none;
             transition: background 0.3s;
         }
 
-        .form-section textarea:focus {
-            background: rgba(255, 255, 255, 0.4);
-        }
-
-        .form-section button {
-            background: rgba(255, 255, 255, 0.2);
-            color: #ffffff;
-            border: none;
-            border-radius: 8px;
-            padding: 0.8em;
-            cursor: pointer;
-            font-size: 1em;
-            transition: background 0.3s, color 0.3s;
-            position: relative;
-        }
-
-        .form-section button:hover {
-            background: rgba(255, 255, 255, 0.4);
-            color: #333333;
-        }
-
-        .spinner {
-            width: 20px;
-            height: 20px;
-            border: 3px solid rgba(255, 255, 255, 0.3);
-            border-top: 3px solid #ffffff;
-            border-radius: 50%;
-            animation: spin 1s linear infinite;
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            display: none;
-        }
-
-        @keyframes spin {
-            0% {
-                transform: translate(-50%, -50%) rotate(0deg);
-            }
-            100% {
-                transform: translate(-50%, -50%) rotate(360deg);
-            }
-        }
-
-        @media (max-width: 768px) {
-            body {
-                padding: 1em;
-            }
-
-            .container {
-                max-width: 90%;
-                padding: 1em;
-            }
-
-            h1 {
-                font-size: 1.8em;
-                margin-bottom: 0.5em;
-            }
-
-            p {
-                font-size: 1em;
-                margin-bottom: 1em;
-            }
+        button:hover {
+            background: #0056b3;
         }
     </style>
 </head>
 <body>
-    <div class="background-animation"></div>
+    <div class="overlay"></div>
     <div class="container">
-        <h1 id="title">Strona w budowie</h1>
-        <p id="description">Pracujemy nad czymś wyjątkowym! 🚀 Wypełnij formularz już teraz i daj nam znać, jak możemy Ci pomóc. 💬 Czekamy na Twoją wiadomość!</p>
-        <div class="language-switch">
-            <button onclick="changeLanguage(&#39;pl&#39;)">Polski</button>
-            <button onclick="changeLanguage(&#39;en&#39;)">English</button>
-            <button onclick="changeLanguage(&#39;de&#39;)">Deutsch</button>
-        </div>
-        <div class="form-section">
-            <h2 id="formTitle">Wyślij wiadomość</h2>
-            <form action="https://formspree.io/f/manyrnby" method="POST">
-                <label for="message" id="labelMessage">Wiadomość:</label>
-                <textarea id="message" name="message" rows="4" placeholder="Napisz swoją wiadomość..." required=""></textarea>
-                <button type="submit" id="sendButton">Wyślij</button>
-            </form>
-        </div>
+        <h1>Strona w budowie</h1>
+        <p>Wracaj wkrótce, aby zobaczyć nasze nowe funkcje i projekty!</p>
+        <button onclick="alert('Dziękujemy za zainteresowanie! Wkrótce wrócimy.')">Więcej informacji</button>
     </div>
-    <script>
-        const translations = {
-            pl: {
-                title: "Strona w budowie",
-                description: "Pracujemy nad czymś wyjątkowym! 🚀 Wypełnij formularz już teraz i daj nam znać, jak możemy Ci pomóc. 💬 Czekamy na Twoją wiadomość!",
-                formTitle: "Wyślij wiadomość",
-                labelMessage: "Wiadomość:",
-                placeholder: "Napisz swoją wiadomość...",
-                sendButton: "Wyślij"
-            },
-            en: {
-                title: "Website Under Construction",
-                description: "We are working on something exceptional! 🚀 Fill out the form now and let us know how we can help you. 💬 We’re looking forward to your message!",
-                formTitle: "Send a Message",
-                labelMessage: "Message:",
-                placeholder: "Write your message...",
-                sendButton: "Send"
-            },
-            de: {
-                title: "Webseite im Aufbau",
-                description: "Wir arbeiten an etwas Außergewöhnlichem! 🚀 Füllen Sie jetzt das Formular aus und lassen Sie uns wissen, wie wir Ihnen helfen können. 💬 Wir freuen uns auf Ihre Nachricht!",
-                formTitle: "Nachricht senden",
-                labelMessage: "Nachricht:",
-                placeholder: "Schreiben Sie Ihre Nachricht...",
-                sendButton: "Senden"
-            }
-        };
-
-        function changeLanguage(lang) {
-            const translation = translations[lang];
-            document.getElementById("title").innerText = translation.title;
-            document.getElementById("description").innerText = translation.description;
-            document.getElementById("formTitle").innerText = translation.formTitle;
-            document.getElementById("labelMessage").innerText = translation.labelMessage;
-            document.getElementById("message").placeholder = translation.placeholder;
-            document.getElementById("sendButton").innerText = translation.sendButton;
-        }
-
-        changeLanguage('pl');
-    </script>
-
-
-</body></html>
+</body>
+</html>
