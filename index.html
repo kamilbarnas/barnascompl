@@ -11,8 +11,8 @@
         body {
             margin: 0;
             font-family: 'Inter', sans-serif;
-            background: #202124; /* Ciemne tło */
-            color: #e8eaed; /* Jasny tekst */
+            background: linear-gradient(180deg, #2b2d31, #1e1e1e); /* Ciemne gradientowe tło */
+            color: #d1d5db; /* Subtelny jasnoszary tekst */
             display: flex;
             justify-content: center;
             align-items: center;
@@ -23,10 +23,10 @@
         }
 
         .container {
-            background: #303134; /* Lekko ciemniejsze tło dla kontenera */
+            background: #33363a; /* Neutralne tło dla elementów */
             padding: 2em;
-            border-radius: 12px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+            border-radius: 16px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
             max-width: 70%;
             width: 100%;
             box-sizing: border-box;
@@ -36,13 +36,13 @@
             font-size: 2.5em;
             font-weight: 600;
             margin-bottom: 0.5em;
-            color: #e8eaed; /* Jasny tekst */
+            color: #ffffff; /* Biały tekst */
         }
 
         p {
             font-size: 1.2em;
             font-weight: 400;
-            color: #e8eaed; /* Jasny tekst */
+            color: #d1d5db; /* Subtelny jasnoszary */
             margin-bottom: 1.5em;
         }
 
@@ -54,10 +54,10 @@
         }
 
         .language-switch button {
-            background: #3c4043; /* Neutralny szary dla przycisków */
-            color: #e8eaed; /* Jasny tekst */
+            background: #4a4d52; /* Neutralny szary dla przycisków */
+            color: #d1d5db; /* Jasnoszary tekst */
             border: none;
-            border-radius: 8px;
+            border-radius: 12px;
             padding: 0.5em 1em;
             cursor: pointer;
             font-size: 1em;
@@ -65,21 +65,21 @@
         }
 
         .language-switch button:hover {
-            background: #5f6368; /* Jaśniejszy szary przy najechaniu */
+            background: #5a5d62; /* Jaśniejszy szary przy najechaniu */
             color: #ffffff;
         }
 
         .form-section {
             margin-top: 2em;
             text-align: left;
-            background: #303134; /* Zgodnie z tłem kontenera */
+            background: #33363a; /* Dopasowane do kontenera */
             padding: 1.5em;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+            border-radius: 12px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
         }
 
         .form-section h2 {
-            color: #e8eaed;
+            color: #ffffff; /* Biały tekst */
             font-size: 1.5em;
             margin-bottom: 1em;
         }
@@ -92,29 +92,29 @@
 
         .form-section label {
             font-size: 1em;
-            color: #e8eaed;
+            color: #d1d5db; /* Jasny tekst */
         }
 
         .form-section textarea {
             padding: 0.8em;
             border: none;
-            border-radius: 8px;
-            background: #3c4043; /* Ciemne pole tekstowe */
-            color: #e8eaed; /* Jasny tekst */
+            border-radius: 12px;
+            background: #4a4d52; /* Neutralne pole tekstowe */
+            color: #ffffff; /* Biały tekst */
             font-size: 1em;
             resize: none;
             transition: background 0.3s;
         }
 
         .form-section textarea:focus {
-            background: #5f6368; /* Jaśniejsze pole przy fokusie */
+            background: #5a5d62; /* Lekko jaśniejsze pole przy fokusie */
         }
 
         .form-section button {
-            background: #3c4043; /* Ciemny przycisk */
-            color: #e8eaed; /* Jasny tekst */
+            background: #4a4d52; /* Ciemny przycisk */
+            color: #ffffff; /* Jasny tekst */
             border: none;
-            border-radius: 8px;
+            border-radius: 12px;
             padding: 0.8em;
             cursor: pointer;
             font-size: 1em;
@@ -122,7 +122,7 @@
         }
 
         .form-section button:hover {
-            background: #5f6368; /* Jaśniejszy przycisk przy najechaniu */
+            background: #5a5d62; /* Jaśniejszy przycisk przy najechaniu */
             color: #ffffff;
         }
     </style>
