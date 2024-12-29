@@ -3,132 +3,185 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Barnas - Interaktywny projekt inspirowany ChatGPT">
+    <meta name="description" content="Strona w budowie, wracaj wkrótce, aby zobaczyć nasze nowe funkcje!">
     <title>Barnas</title>
     <link rel="icon" href="https://barnas.com.pl/favicon.ico" type="image/x-icon">
     <style>
         body {
             margin: 0;
-            font-family: 'Arial', sans-serif;
-            background-color: #1e1e2f;
-            color: #e0e0e0;
+            font-family: 'Inter', sans-serif;
+            background: #f0f0f0; /* Jasne neutralne tło */
+            color: #333; /* Ciemny tekst */
             display: flex;
-            flex-direction: column;
+            justify-content: center;
             align-items: center;
-            justify-content: flex-start;
-            height: 100vh;
-        }
-
-        header {
-            width: 100%;
-            background-color: #2b2b40;
-            padding: 1rem;
+            min-height: 100vh;
+            padding: 0;
             text-align: center;
-            font-size: 1.5rem;
-            color: #ffffff;
         }
 
-        main {
-            flex-grow: 1;
+        .container {
+            background: #ffffff; /* Białe tło dla kontenera */
+            padding: 2em;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Delikatny cień */
+            max-width: 700px;
             width: 100%;
-            max-width: 900px;
+            box-sizing: border-box;
+        }
+
+        h1 {
+            font-size: 2em;
+            font-weight: 600;
+            margin-bottom: 1em;
+            color: #1a1a1a; /* Ciemniejszy tekst */
+        }
+
+        p {
+            font-size: 1.1em;
+            font-weight: 400;
+            color: #555; /* Średnio ciemny tekst */
+            margin-bottom: 1.5em;
+        }
+
+        .language-switch {
+            display: flex;
+            justify-content: center;
+            gap: 1em;
+            flex-wrap: wrap;
+            margin-bottom: 2em;
+        }
+
+        .language-switch button {
+            background: #e8e8e8; /* Jasnoszary przycisk */
+            color: #333; /* Ciemny tekst */
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            padding: 0.5em 1em;
+            cursor: pointer;
+            font-size: 1em;
+            transition: background 0.3s, transform 0.2s;
+        }
+
+        .language-switch button:hover {
+            background: #d6d6d6; /* Delikatnie ciemniejszy szary */
+            transform: scale(1.05);
+        }
+
+        .form-section {
+            margin-top: 1em;
+            text-align: left;
+            background: #f9f9f9; /* Lekko szare tło */
+            padding: 1.5em;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtelny cień */
+        }
+
+        .form-section h2 {
+            color: #1a1a1a;
+            font-size: 1.5em;
+            margin-bottom: 1em;
+        }
+
+        .form-section form {
             display: flex;
             flex-direction: column;
-            justify-content: flex-end;
-            gap: 1rem;
-            padding: 1rem;
-            overflow-y: auto;
-            background-color: #2a2a3b;
-            border-radius: 10px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+            gap: 1em;
         }
 
-        .message {
-            margin: 0.5rem 0;
-            padding: 0.8rem;
-            border-radius: 10px;
-            max-width: 70%;
-            line-height: 1.5;
+        .form-section label {
+            font-size: 1em;
+            color: #555; /* Średnio ciemny tekst */
         }
 
-        .message.user {
-            background-color: #4a90e2;
-            color: #fff;
-            align-self: flex-end;
-        }
-
-        .message.bot {
-            background-color: #3c3c4e;
-            color: #e0e0e0;
-            align-self: flex-start;
-        }
-
-        .input-section {
-            display: flex;
-            width: 100%;
-            padding: 1rem 0;
-            gap: 0.5rem;
-        }
-
-        .input-section textarea {
-            flex-grow: 1;
-            border: none;
-            border-radius: 10px;
-            padding: 0.8rem;
-            font-size: 1rem;
+        .form-section textarea {
+            padding: 0.8em;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            background: #ffffff; /* Białe pole tekstowe */
+            color: #333; /* Ciemny tekst */
+            font-size: 1em;
             resize: none;
-            background-color: #3c3c4e;
-            color: #fff;
+            transition: border-color 0.3s;
         }
 
-        .input-section button {
-            padding: 0.8rem 1.5rem;
-            background-color: #4a90e2;
-            color: #fff;
+        .form-section textarea:focus {
+            border-color: #0078d7; /* Akcent w stylu ChatGPT */
+        }
+
+        .form-section button {
+            background: #0078d7; /* Niebieski akcent */
+            color: #ffffff; /* Biały tekst */
             border: none;
-            border-radius: 10px;
+            border-radius: 8px;
+            padding: 0.8em;
             cursor: pointer;
-            font-size: 1rem;
-            transition: background-color 0.3s;
+            font-size: 1em;
+            transition: background 0.3s;
         }
 
-        .input-section button:hover {
-            background-color: #3b7cc1;
+        .form-section button:hover {
+            background: #005bb5; /* Ciemniejszy niebieski */
         }
-
     </style>
 </head>
 <body>
-    <header>Barnas Chat</header>
-    <main id="chat">
-        <div class="message bot">Witaj! Jak mogę Ci pomóc?</div>
-    </main>
-    <div class="input-section">
-        <textarea id="userInput" placeholder="Napisz swoją wiadomość..." rows="1"></textarea>
-        <button onclick="sendMessage()">Wyślij</button>
+    <div class="container">
+        <h1 id="title">Strona w budowie</h1>
+        <p id="description">Pracujemy nad czymś wyjątkowym! 🚀 Wypełnij formularz już teraz i daj nam znać, jak możemy Ci pomóc. 💬 Czekamy na Twoją wiadomość!</p>
+        <div class="language-switch">
+            <button onclick="changeLanguage('pl')">Polski</button>
+            <button onclick="changeLanguage('en')">English</button>
+            <button onclick="changeLanguage('de')">Deutsch</button>
+        </div>
+        <div class="form-section">
+            <h2 id="formTitle">Wyślij wiadomość</h2>
+            <form action="https://formspree.io/f/manyrnby" method="POST">
+                <label for="message" id="labelMessage">Wiadomość:</label>
+                <textarea id="message" name="message" rows="4" placeholder="Napisz swoją wiadomość..." required></textarea>
+                <button type="submit" id="sendButton">Wyślij</button>
+            </form>
+        </div>
     </div>
-
     <script>
-        const chat = document.getElementById('chat');
-
-        function sendMessage() {
-            const userInput = document.getElementById('userInput');
-            const userMessage = userInput.value.trim();
-
-            if (userMessage) {
-                addMessage(userMessage, 'user');
-                addMessage('Dziękujemy za wiadomość! Odpowiemy wkrótce.', 'bot');
-                userInput.value = '';
+        const translations = {
+            pl: {
+                title: "Strona w budowie",
+                description: "Pracujemy nad czymś wyjątkowym! 🚀 Wypełnij formularz już teraz i daj nam znać, jak możemy Ci pomóc. 💬 Czekamy na Twoją wiadomość!",
+                formTitle: "Wyślij wiadomość",
+                labelMessage: "Wiadomość:",
+                placeholder: "Napisz swoją wiadomość...",
+                sendButton: "Wyślij"
+            },
+            en: {
+                title: "Website Under Construction",
+                description: "We are working on something exceptional! 🚀 Fill out the form now and let us know how we can help you. 💬 We’re looking forward to your message!",
+                formTitle: "Send a Message",
+                labelMessage: "Message:",
+                placeholder: "Write your message...",
+                sendButton: "Send"
+            },
+            de: {
+                title: "Webseite im Aufbau",
+                description: "Wir arbeiten an etwas Außergewöhnlichem! 🚀 Füllen Sie jetzt das Formular aus und lassen Sie uns wissen, wie wir Ihnen helfen können. 💬 Wir freuen uns auf Ihre Nachricht!",
+                formTitle: "Nachricht senden",
+                labelMessage: "Nachricht:",
+                placeholder: "Schreiben Sie Ihre Nachricht...",
+                sendButton: "Senden"
             }
+        };
+
+        function changeLanguage(lang) {
+            const translation = translations[lang];
+            document.getElementById("title").innerText = translation.title;
+            document.getElementById("description").innerText = translation.description;
+            document.getElementById("formTitle").innerText = translation.formTitle;
+            document.getElementById("labelMessage").innerText = translation.labelMessage;
+            document.getElementById("message").placeholder = translation.placeholder;
+            document.getElementById("sendButton").innerText = translation.sendButton;
         }
 
-        function addMessage(text, sender) {
-            const message = document.createElement('div');
-            message.className = `message ${sender}`;
-            message.textContent = text;
-            chat.appendChild(message);
-            chat.scrollTop = chat.scrollHeight;
-        }
+        changeLanguage('pl');
     </script>
 </body>
 </html>
