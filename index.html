@@ -210,28 +210,24 @@
         }
     };
 
-    async function detectLanguage() {
+    // Detect user's location based on IP
+    async function detectLocation() {
         try {
-            console.log("Detecting language...");
-            const response = await fetch('https://cors-anywhere.herokuapp.com/https://ipapi.co/json/');
-            
-            if (!response.ok) {
-                throw new Error(`API response error: ${response.status}`);
-            }
-            
+            const response = await fetch("https://ipinfo.io?token=YOUR_API_KEY");  // Zastąp "YOUR_API_KEY" rzeczywistym kluczem API
             const data = await response.json();
-            const countryCode = data.country_code ? data.country_code.toLowerCase() : 'en';
-            console.log(`Country code detected: ${countryCode}`);
-            
-            let lang = 'en'; // Default language
-            if (countryCode === 'pl') lang = 'pl';
-            else if (countryCode === 'de') lang = 'de';
-            
-            console.log(`Language selected: ${lang}`);
+            console.log("Detected location: ", data.country);
+
+            let lang = 'pl'; // Default to Polish
+            if (data.country === 'DE') {
+                lang = 'de'; // Germany -> German
+            } else if (data.country === 'GB' || data.country === 'US') {
+                lang = 'en'; // English-speaking countries
+            }
+
             changeLanguage(lang);
         } catch (error) {
-            console.error("Error detecting language:", error);
-            changeLanguage('en'); // Fallback to default language
+            console.error("Error detecting location:", error);
+            changeLanguage('pl'); // Fallback to default language
         }
     }
 
@@ -246,8 +242,8 @@
         document.getElementById("sendButton").innerText = translation.sendButton;
     }
 
-    // Detect language on page load
-    detectLanguage();
+    // Detect location on page load
+    detectLocation();
 </script>
 </body>
 </html>
