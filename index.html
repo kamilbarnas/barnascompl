@@ -1,7 +1,7 @@
 <!DOCTYPE html>
-<html lang="pl">
-<head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<!-- saved from url=(0014)about:internet -->
+<html lang="pl"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Strona w budowie, wracaj wkrótce, aby zobaczyć nasze nowe funkcje!">
     <meta name="keywords" content="Kamil Barnas, projektowanie stron, budowa stron, responsywne strony, usługi web design, nowoczesne strony www">
@@ -168,15 +168,15 @@
         <h1 id="title">Strona w budowie</h1>
         <p id="description">Pracujemy nad czymś wyjątkowym! 🚀 Wypełnij formularz już teraz i daj nam znać, jak możemy Ci pomóc. 💬 Czekamy na Twoją wiadomość!</p>
         <div class="language-switch">
-            <button onclick="changeLanguage('pl')">Polski</button>
-            <button onclick="changeLanguage('en')">English</button>
-            <button onclick="changeLanguage('de')">Deutsch</button>
+            <button onclick="changeLanguage(&#39;pl&#39;)">Polski</button>
+            <button onclick="changeLanguage(&#39;en&#39;)">English</button>
+            <button onclick="changeLanguage(&#39;de&#39;)">Deutsch</button>
         </div>
         <div class="form-section">
             <h2 id="formTitle">Wyślij wiadomość</h2>
             <form action="https://formspree.io/f/manyrnby" method="POST">
                 <label for="message" id="labelMessage">Wiadomość:</label>
-                <textarea id="message" name="message" rows="4" placeholder="Napisz swoją wiadomość..." required></textarea>
+                <textarea id="message" name="message" rows="4" placeholder="Napisz swoją wiadomość..." required=""></textarea>
                 <button type="submit" id="sendButton">Wyślij</button>
             </form>
         </div>
@@ -221,5 +221,65 @@
 
         changeLanguage('pl');
     </script>
-</body>
-</html>
+
+
+
+<script>
+    const translations = {
+        pl: {
+            title: "Strona w budowie",
+            description: "Pracujemy nad czymś wyjątkowym! 🚀 Wypełnij formularz już teraz i daj nam znać, jak możemy Ci pomóc. 💬 Czekamy na Twoją wiadomość!",
+            formTitle: "Wyślij wiadomość",
+            labelMessage: "Wiadomość:",
+            placeholder: "Napisz swoją wiadomość...",
+            sendButton: "Wyślij"
+        },
+        en: {
+            title: "Website Under Construction",
+            description: "We are working on something exceptional! 🚀 Fill out the form now and let us know how we can help you. 💬 We’re looking forward to your message!",
+            formTitle: "Send a Message",
+            labelMessage: "Message:",
+            placeholder: "Write your message...",
+            sendButton: "Send"
+        },
+        de: {
+            title: "Webseite im Aufbau",
+            description: "Wir arbeiten an etwas Außergewöhnlichem! 🚀 Füllen Sie jetzt das Formular aus und lassen Sie uns wissen, wie wir Ihnen helfen können. 💬 Wir freuen uns auf Ihre Nachricht!",
+            formTitle: "Nachricht senden",
+            labelMessage: "Nachricht:",
+            placeholder: "Schreiben Sie Ihre Nachricht...",
+            sendButton: "Senden"
+        }
+    };
+
+    async function detectLanguage() {
+        try {
+            const response = await fetch('https://ipapi.co/json/');
+            const data = await response.json();
+            const countryCode = data.country_code.toLowerCase();
+            
+            let lang = 'en'; // Default language
+            if (countryCode === 'pl') lang = 'pl';
+            else if (countryCode === 'de') lang = 'de';
+            
+            changeLanguage(lang);
+        } catch (error) {
+            console.error("Unable to detect language", error);
+            changeLanguage('en'); // Default language if API fails
+        }
+    }
+
+    function changeLanguage(lang) {
+        const translation = translations[lang];
+        document.getElementById("title").innerText = translation.title;
+        document.getElementById("description").innerText = translation.description;
+        document.getElementById("formTitle").innerText = translation.formTitle;
+        document.getElementById("labelMessage").innerText = translation.labelMessage;
+        document.getElementById("message").placeholder = translation.placeholder;
+        document.getElementById("sendButton").innerText = translation.sendButton;
+    }
+
+    // Detect language on page load
+    detectLanguage();
+</script>
+</body></html>
