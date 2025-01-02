@@ -1,7 +1,7 @@
 <!DOCTYPE html>
-<html lang="pl">
-<head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<!-- saved from url=(0014)about:internet -->
+<html lang="pl"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Strona w budowie, wracaj wkrótce, aby zobaczyć nasze nowe funkcje!">
     <meta name="keywords" content="Kamil Barnas, projektowanie stron, budowa stron, responsywne strony, usługi web design, nowoczesne strony www">
@@ -165,19 +165,19 @@
 </head>
 <body>
     <div class="container">
-        <h1 id="title">Strona w budowie</h1>
-        <p id="description">Pracujemy nad czymś wyjątkowym! 🚀 Wypełnij formularz już teraz i daj nam znać, jak możemy Ci pomóc. 💬 Czekamy na Twoją wiadomość!</p>
+        <h1 id="title">Webseite im Aufbau</h1>
+        <p id="description">Wir arbeiten an etwas Außergewöhnlichem! 🚀 Füllen Sie jetzt das Formular aus und lassen Sie uns wissen, wie wir Ihnen helfen können. 💬 Wir freuen uns auf Ihre Nachricht!</p>
         <div class="language-switch">
-            <button onclick="changeLanguage('pl')">Polski</button>
-            <button onclick="changeLanguage('en')">English</button>
-            <button onclick="changeLanguage('de')">Deutsch</button>
+            <button onclick="changeLanguage(&#39;pl&#39;)">Polski</button>
+            <button onclick="changeLanguage(&#39;en&#39;)">English</button>
+            <button onclick="changeLanguage(&#39;de&#39;)">Deutsch</button>
         </div>
         <div class="form-section">
-            <h2 id="formTitle">Wyślij wiadomość</h2>
+            <h2 id="formTitle">Nachricht senden</h2>
             <form action="https://formspree.io/f/manyrnby" method="POST">
-                <label for="message" id="labelMessage">Wiadomość:</label>
-                <textarea id="message" name="message" rows="4" placeholder="Napisz swoją wiadomość..." required=""></textarea>
-                <button type="submit" id="sendButton">Wyślij</button>
+                <label for="message" id="labelMessage">Nachricht:</label>
+                <textarea id="message" name="message" rows="4" placeholder="Schreiben Sie Ihre Nachricht..." required=""></textarea>
+                <button type="submit" id="sendButton">Senden</button>
             </form>
         </div>
     </div>
@@ -227,7 +227,7 @@
             changeLanguage(lang);
         } catch (error) {
             console.error("Error detecting location:", error);
-            changeLanguage('pl'); // Fallback to default language
+            changeLanguage('en'); // Fallback to default language
         }
     }
 
@@ -245,5 +245,6 @@
     // Detect location on page load
     detectLocation();
 </script>
-</body>
-</html>
+
+
+</body></html>
